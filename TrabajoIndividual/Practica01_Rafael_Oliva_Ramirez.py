@@ -283,7 +283,10 @@ def filtra_perfectos(a,b,f):
 d1={"a":5,"b":10,"c":12,"d":11,"e":15,"f":20,"g":15,"h":9,"i":7,"j":2}
 def histograma_horizontal(d1):
     for x,y in sorted(d1.items()):
-      print( x , ": ", y * '*')
+        if(y>0 and y<50):# Si esta en el rango se imprime los puntos
+            print( x , ": ", y * '*')
+        else:
+            print('Te has pasado de rango')
 
 
 # -----------
