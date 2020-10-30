@@ -327,8 +327,17 @@ def histograma_horizontal(d1):
 #         función "sorted" sobre las claves
 # ---------------------------------------------------------------------------
 
-#d2={"a":5,"b":7,"c":9,"d":12,"e":15,"f":20,"g":15,"h":9,"i":7,"j":2}
-
+d2={"a":5,"b":7,"c":9,"d":12,"e":15,"f":20,"g":15,"h":9,"i":7,"j":2}
 #Buscamos el máximo de todos para saber por cual empezar.
-
-#def histograma_vertical(d2):
+def histograma_vertical(d2):
+    max_num = max(d2.values())#Sacamos el valor maximo
+    items = sorted(d2.items())#ordenamos lo items
+    for x in range(max_num+1):#Ponemos el mas uno por que el contador empieza desde cero
+        print(*(
+            '*'#Si el numero maximo es menos se imprime el *
+            if max_num-x<v
+            else#Si es mayor se va imprimiendo espacios
+            ' '
+            for k, v in items# k es la key y v es el valor de la key
+        ))
+    print(*d2.keys())#Solo mostramos las keys
