@@ -222,8 +222,50 @@ def sustituye_patrones(frase, fichero):
 # sencillo juego:
 
 import random
-digits = list(range(10))
-random.shuffle(digits)
-print(digits[:3])
-guess = input("¿Cuál es tú apuesta?: ")
-print(guess)
+
+valores = ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9')
+
+cant_digitos = 3
+codigo = ''
+
+for i in range(cant_digitos):
+    candidato = random.choice(valores)
+
+    while candidato in codigo:
+        candidato = random.choice(valores)
+    codigo = codigo + candidato
+
+print("¡Bienvenido al decodificador!")
+print("Tienes que adivinar un numero de ", cant_digitos,
+      "cifras distintas")
+propuesta = input('¿Cuál es tú apuesta?: ')
+
+intentos = 3
+while propuesta != codigo and propuesta != 'looser':
+    intentos = intentos + 1
+    aciertos = 0
+    coincidencias = 0
+    for i in range(cant_digitos):
+        if propuesta[i] == codigo[i]:
+            aciertos = aciertos + 1
+        elif propuesta[i] in codigo:
+            coincidencias = coincidencias + 1
+    print("Tu propuesta (", propuesta, ") tiene", aciertos,
+          "aciertos y ", coincidencias, "coincidencias.")
+
+    if coincidencias == 3:
+        print("¡Casi!, reordénalos.")
+    elif coincidencias == 2:
+        print(" Cerca, ¡sigue así!")
+    elif candidato == propuesta:
+        print("¡Enhorabuena, ahora eres un hacker! ",
+          intentos, "intentos realizados")
+    propuesta = input("Nada, inténtalo de nuevo.  ")
+
+if propuesta == 'looser':
+    print("El codigo era", codigo)
+    print("Suerte la proxima vez!")
+else:
+    print("¡Enhorabuena, ahora eres un hacker! ",
+          intentos, "intentos realizados")
+
