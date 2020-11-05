@@ -111,6 +111,7 @@ def sustituye_patrones(frase, fichero):
         archivo.close()
 
 sustituye_patrones("1 me dijo que 0 vendría con 2","sustituciones.txt")
+
 # Nótese que:
 # - Supondremos que en la frase de entrada las palabras se separan mediante un
 #   único espacio, y que los únicos números que aparecen son dígitos de 0 a 9.
@@ -192,6 +193,66 @@ sustituye_patrones("1 me dijo que 0 vendría con 2","sustituciones.txt")
 # - Las líneas de salida del ejemplo han sido impresas con la siguiente cadena
 #   de formateo:  "{0:>8} {1:<30} {2:<15} {3}"
 # ----------------------------------------------------------------------------------
+
+def imprime_usuarios(rutatxt):
+    import re
+
+    try:
+        archivo = open(rutatxt, 'r')
+
+        # Variable del patron
+        patron = '^[0-9]{8}(?::)[A-Z]{1}[a-z]+(?::)(?::|[A-Z]{1}[a-z]+(?::))[A-Z]{1}[a-z]+(?::)[A-Z]{1}[a-z]+$'
+
+        # Lista bidimensional con los datos del txt
+        data = [linea.rstrip('\n').split(':') for linea in archivo if re.search(patron, linea)]
+
+        # Head de la tabla
+        head = ['DNI', 'Apellidos', 'Nombre', 'Usuario']
+        head_guiones = ['--------', '------------------------------', '---------------', '--------']
+        # Imprimimos el head de la tabla
+        print(head[0] + '      ' + head[1] + '                      ' + head[2] + '          ' + head[3])
+        print(head_guiones[0] + ' ' + head_guiones[1] + ' ' + head_guiones[2] + ' ' + head_guiones[3])
+
+        # Lista de Dni
+        dni = [linea[0] for linea in data]
+        # Lista de primeros nombres
+        nombre1 = [linea[1] for linea in data]
+        # Lista de segundos nombres
+        nombre2 = [linea[2] for linea in data]
+        # Lista de primeros apellidos
+        apellido1 = [linea[3] for linea in data]
+        # Lista de segundos apellidos
+        apellido2 = [linea[4] for linea in data]
+        # Lista de usuarios
+        user = [nombre1[x][0].lower() + apellido1[x][0:3].lower() + apellido2[x][0:3].lower() if nombre2[x] == '' else
+                nombre1[x][0].lower() + nombre2[x][0].lower() + apellido1[x][0:3].lower() + apellido2[x][0:3].lower()
+                for x in range(len(dni))]
+
+        # Lista donde se almacena los usuarios mostrados
+        user_show = []
+        # Bucle para imprimir los datos del fichero en la tabla
+        for z in range(len(dni)):
+            if (user[z] in user_show):
+                n = user_show.count(user[z])
+                if (len(user[z]) == 7):
+                    print(f"{dni[z]:>8} {apellido1[z] + ' ' + apellido2[z]:<30} {nombre1[z]:<15} {user[z] + str(n)}")
+                else:
+                    print(
+                        f"{dni[z]:>8} {apellido1[z] + ' ' + apellido2[z]:<30} {nombre1[z] + ' ' + nombre2[z]:<15} {user[z] + str(n)}")
+            else:
+                if (len(user[z]) == 7):
+                    # Con el :> le estamos añadiendo las posiciones
+                    print(f"{dni[z]:>8} {apellido1[z] + ' ' + apellido2[z]:<30} {nombre1[z]:<15} {user[z]}")
+                else:
+                    print(
+                        f"{dni[z]:>8} {apellido1[z] + ' ' + apellido2[z]:<30} {nombre1[z] + ' ' + nombre2[z]:<15} {user[z]}")
+            user_show.append(user[z])
+
+    except IOError:
+        print("Error, no se ha encontrado el archivo")
+    finally:
+        archivo.close()
+
 
 # -----------------------------------------------------------------------------
 # EJERCICIO 3) EL DECODIFICADOR
