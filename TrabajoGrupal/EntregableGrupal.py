@@ -7,8 +7,8 @@
 
 # GRUPO:
 # INTEGRANTE 1:
-#   APELLIDOS, NOMBRE:
-#   DNI:
+#   APELLIDOS, NOMBRE: ORTEGA CHINCHILLA, ANTONIO
+#   DNI: 30266794J
 # INTEGRANTE 2:
 #   APELLIDOS, NOMBRE:
 #   DNI:
@@ -96,7 +96,21 @@
 # Los hijos de Francisco son Jose y Rafael
 
 def sustituye_patrones(frase, fichero):
+    try:
+        archivo = open(fichero, 'r')
+        tests = [linea.rstrip('\n').split(':') for linea in archivo]
+        for test in tests:
+            texto = frase
+            for idx in range(len(test)):
+                texto = texto.replace(str(idx), test[idx])
 
+            print(texto)
+    except IOError:
+        print("No se ha encontrado el archivo.")
+    finally:
+        archivo.close()
+
+sustituye_patrones("1 me dijo que 0 vendría con 2","sustituciones.txt")
 # Nótese que:
 # - Supondremos que en la frase de entrada las palabras se separan mediante un
 #   único espacio, y que los únicos números que aparecen son dígitos de 0 a 9.
