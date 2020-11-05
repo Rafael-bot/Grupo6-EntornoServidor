@@ -110,7 +110,10 @@ def sustituye_patrones(frase, fichero):
     finally:
         archivo.close()
 
-sustituye_patrones("1 me dijo que 0 vendría con 2","sustituciones.txt")
+
+sustituye_patrones("1 me dijo que 0 vendría con 2", "sustituciones.txt")
+
+
 # Nótese que:
 # - Supondremos que en la frase de entrada las palabras se separan mediante un
 #   único espacio, y que los únicos números que aparecen son dígitos de 0 a 9.
@@ -252,6 +255,8 @@ def imprime_usuarios(rutatxt):
     finally:
         archivo.close()
 
+
+imprime_usuarios("nombres.txt")
 # -----------------------------------------------------------------------------
 # EJERCICIO 3) EL DECODIFICADOR
 
@@ -332,7 +337,7 @@ while propuesta != codigo and propuesta != 'looser':
         print(" Cerca, ¡sigue así!")
     elif candidato == propuesta:
         print("¡Enhorabuena, ahora eres un hacker! ",
-          intentos, "intentos realizados")
+              intentos, "intentos realizados")
     propuesta = input("Nada, inténtalo de nuevo.  ")
 
 if propuesta == 'looser':
@@ -341,4 +346,3 @@ if propuesta == 'looser':
 else:
     print("¡Enhorabuena, ahora eres un hacker! ",
           intentos, "intentos realizados")
-
