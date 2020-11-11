@@ -297,9 +297,9 @@ filtra_perfectos(3, 500, lambda x: (x % 7 == 0))
 d1 = {"a": 5, "b": 10, "c": 12, "d": 11, "e": 15, "f": 20, "g": 15, "h": 9, "i": 7, "j": 2}
 
 
-def histograma_horizontal(d1):
-    for x, y in sorted(d1.items()):
-        print(x, ": ", y * '*')
+def histograma_horizontal(d):
+    for k in sorted(d):
+        print("{}:{}".format(k,"*"*d[k]))
 
 
 histograma_horizontal(d1)
@@ -343,15 +343,10 @@ histograma_horizontal(d1)
 
 d2 = {"a": 5, "b": 7, "c": 9, "d": 12, "e": 15, "f": 20, "g": 15, "h": 9, "i": 7, "j": 2}
 
-
-# Buscamos el máximo de todos para saber por cual empezar.
-
-def histograma_vertical(d2):
-    max_n = max(d2.values())
-    s_dict = sorted(d2.items())
-    for row in range(max_n + 1):
-        print(*("*" if max_n - row < n else " " for key, n in s_dict))
-    print(*d2.keys())
-
+def histograma_vertical(d):
+    max_value = max(d.values())
+    for i in range(max_value,0,-1):
+        print("".join(['  ' if d[k]<i else '* ' for k in sorted(d)]))
+    print("".join([k+" " for k in sorted(d.keys())]))
 
 histograma_vertical(d2)
