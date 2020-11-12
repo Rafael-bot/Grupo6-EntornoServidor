@@ -21,8 +21,40 @@
 # y es llamado "UNO" y será un juego de tú contra la máquina. Si no sabes en qué
 # consiste el juego "UNO", aquí te dejo un video: https://www.youtube.com/watch?v=MxnkDj8PIxQ&ab_channel=LIMITLESS
 
+#Array de  numeros de las caratas  0,1,2,3,4,5,6,7,8,9
+#Array de los colores
+#Array cartas especiales +2,+4,cambio color, cambio de sentido, salto
 
+#Clase de Barajas
+class Baraja:
+    #Funcion que creara la baraja de cada jugador
+    def crearBaraja(self):
+    #Funcion que te dice el tipo de carta
+    def pintarCartas(self):
+    #Funcion que verifica que la carta que posiste es la que tienes que poner
+    def cumplirRegla(self):
 
+#Clase de Jugadores
+class Jugadores:
+    #Funcion que te muestra tu baraja
+    def mostrarMano(self):
+    #Funcion de escoger color
+    def escogerColor(self):
+    #Funcion de robar cartas
+    def robar(self):
+    #Funcion que contrale los robos
+    def controRobos(self):
+    #Funcion para escoger carta y se aplique
+    def escogerCarta(self):
+    #Funcion que te reste un carta y verifique si es valida
+    def condicCarta(self):
+
+#Clase de la Mesa
+class Mesa:
+    #Funcion que te diga la ultima carta
+    def ultiCarta(self):
+
+#Comienza el juego
 
 
 ######################
