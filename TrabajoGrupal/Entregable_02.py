@@ -22,8 +22,15 @@
 # consiste el juego "UNO", aquí te dejo un video: https://www.youtube.com/watch?v=MxnkDj8PIxQ&ab_channel=LIMITLESS
 
 #Array de  numeros de las caratas  0,1,2,3,4,5,6,7,8,9
+cardsArray = [0,1,2,3,4,5,6,7,8,9]
 #Array de los colores
+colors = ['Roja','Azul','Verde','Amarilla']
 #Array cartas especiales +2,+4,cambio color, cambio de sentido, salto
+especials = ['+2','+4','Cambio Color','Cambio de Sentido','Salto']
+#Array Baraja Jugador
+barajaJ = []
+#Array Baraja IA
+barajaI = []
 
 #Clase de Barajas
 class Baraja:
@@ -37,7 +44,7 @@ class Baraja:
 #Clase de Jugadores
 class Jugadores:
     #Funcion que te muestra tu baraja
-    def mostrarMano(self):
+    def mostrarMano(self, ):
     #Funcion de escoger color
     def escogerColor(self):
     #Funcion de robar cartas
