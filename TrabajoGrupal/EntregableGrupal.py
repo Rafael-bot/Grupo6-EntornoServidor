@@ -255,8 +255,6 @@ def imprime_usuarios(rutatxt):
     finally:
         archivo.close()
 
-
-imprime_usuarios("nombres.txt")
 # -----------------------------------------------------------------------------
 # EJERCICIO 3) EL DECODIFICADOR
 
