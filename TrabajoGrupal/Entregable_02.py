@@ -43,8 +43,15 @@ class Baraja:
 
 #Clase de Jugadores
 class Jugadores:
+    # Funcion inicial de la clase Jugador
+    def __init__(self, baraja, carta):
+        self.baraja = baraja
+        self.carta = carta
+
     #Funcion que te muestra tu baraja
-    def mostrarMano(self, ):
+    def mostrarMano(self):
+        #Retornamos la baraja en un string
+        return ' '.join(map(str, self.baraja))
     #Funcion de escoger color
     def escogerColor(self):
     #Funcion de robar cartas
@@ -61,13 +68,12 @@ class Mesa:
     #Funcion que te diga la ultima carta
     def ultiCarta(self):
 
-#Comienza el juego
-
 
 ######################
 #### GAME PLAY #######
 ######################
-print("Welcome to UNO, let's begin...")
+def start():
+    print("Welcome to UNO, let's begin...")
 
 # Usa los conocimientos adquiridos junto con algo de lógica para jugar un juego de "UNO"!
 
