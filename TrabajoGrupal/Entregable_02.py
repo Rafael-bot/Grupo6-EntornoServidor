@@ -23,7 +23,7 @@
 
 
 #Array de los colores
-colors = ['Negro','Roja','Azul','Verde','Amarilla']
+colors = ['Negra','Roja','Azul','Verde','Amarilla']
 # Array de la  baraja de cartas sin cojer
 baraja = []
 # Array del montón en la mesa
@@ -40,10 +40,9 @@ class Baraja:
     def crearBaraja(self):
     #Funcion que te dice el tipo de carta
     def pintarCartas(self):
-    #Funcion que verifica que la carta que posiste es la que tienes que poner
+    #Funcion que comprueba si la carta es especial, es decir, Negra
     def cumplirRegla(self):
-    #Funcion que te reste un carta y verifique si es valida
-    def condicCarta(self):
+
 
 #Clase de Jugadores
 class Jugadores:
