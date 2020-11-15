@@ -23,7 +23,7 @@
 
 
 #Array de los colores
-colors = ['Roja','Azul','Verde','Amarilla']
+colors = ['Negro','Roja','Azul','Verde','Amarilla']
 # Array de la  baraja de cartas sin cojer
 baraja = []
 # Array del montón en la mesa
