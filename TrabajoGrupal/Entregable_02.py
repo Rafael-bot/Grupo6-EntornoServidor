@@ -46,14 +46,36 @@ class Baraja:
 
 #Clase de Jugadores
 class Jugadores:
+
     #Funcion que te muestra tu baraja
     def mostrarMano(self):
+
     #Funcion de escoger color
     def escogerColor(self):
+        #Variable donde se almacenara el color elegido
+        colorElegido = ""
+        #Variable para controlar el bucle
+        control = True
+        while control:
+            #Variable de la posicion del array de los colores
+            cont_colors = 1#Es 1 para que no coja el color negro
+            for c in colors[1:]:
+                print(f'{c}.{str(cont_colors)} ')   
+                cont_colors +1
+            #Le pedimos al usuario que elija el color con un numero
+            colorElegido = input("Escoge color: ")
+            #El bucle se termina cuando sea elegido un numero, no sea elegido el negro y si no te has pasado de rango
+            if colorElegido.isnumeric() and int(colorElegido) > 0 and int(colorElegido) <= len(colors) - 1:
+                control = False
+        #Retornamos el color con la posicion en el array
+        return colors[int(colorElegido)]
+
     #Funcion de robar cartas
     def robar(self):
+
     #Funcion que contrale los robos
     def controRobos(self):
+
     #Funcion para escoger carta y se aplique
     def escogerCarta(self):
     #Funcion con la que se activa la carta
