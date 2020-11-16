@@ -71,7 +71,20 @@ class Jugadores:
         return colors[int(colorElegido)]
 
     #Funcion de robar cartas
-    def robar(self):
+    #
+    #     La función robar, utilizará
+    #
+    def robar(jugador, numero, baraja):
+        #Este bucle usa un elemento comodín "_" que no va a tener utilidad || Podría ser una variable como "ì", "x", etc .
+        for _ in range(numero):
+            #Se ejecutará si hay cartas en la baraja.
+            if len(baraja) > 0:
+                #Gracias al método "append" agregaremos a la mano de jugador una la carta en posición 0 de la baraja.
+                jugador["mano"].append(baraja[0])
+                #Una vez cogida la carta de la baraja le restaremos a la misma una.
+                baraja = baraja[1:]
+        #Retornamos la baraja.
+        return baraja
 
     #Funcion que contrale los robos
     def controRobos(self):
