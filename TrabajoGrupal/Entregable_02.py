@@ -65,7 +65,7 @@ class Jugadores:
             #Le pedimos al usuario que elija el color con un numero
             colorElegido = input("Escoge color: ")
             #El bucle se termina cuando sea elegido un numero, no sea elegido el negro y si no te has pasado de rango
-            if colorElegido.isnumeric() and int(colorElegido) > 0 and int(colorElegido) <= len(colors) - 1:
+            if(colorElegido.isnumeric() and int(colorElegido) > 0 and int(colorElegido) <= len(colors) - 1):
                 control = False
         #Retornamos el color con la posicion en el array
         return colors[int(colorElegido)]
