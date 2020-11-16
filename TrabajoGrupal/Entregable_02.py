@@ -74,7 +74,7 @@ class Jugadores:
     #
     #     La función robar, utilizará
     #
-    def robar(jugador, numero, baraja):
+    def robar(self, jugador, numero, baraja):
         #Este bucle usa un elemento comodín "_" que no va a tener utilidad || Podría ser una variable como "ì", "x", etc .
         for _ in range(numero):
             #Se ejecutará si hay cartas en la baraja.
