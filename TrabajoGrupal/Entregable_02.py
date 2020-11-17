@@ -37,7 +37,28 @@ jugadores = [
 #Clase de Barajas
 class Baraja:
     #Funcion que creara la baraja de cada jugador
-    def crearBaraja(self):
+def crearBaraja(self):
+    baraja = []  # este array vacio pide al usuario que introduzca la baraja
+    for carta in range(0, 9):  # aqui le damos valores a tomar desde el 0 al 9
+        for color in colores[1:]:
+            for _ in range(2 if carta > 0 else 1):
+                baraja.append(
+                    {"color": color, "valor": str(carta), "robar": 0})
+    for _ in range(4):  # Añadimos las cartas especiales
+        baraja.append({"color": "NEGRO", "valor": "+4", "robar": 4})
+        # nos permite agregar nuevas cartas a la baraja
+        baraja.append({"color": "NEGRO", "valor": "CAMBIO_COLOR", "robar": 0})
+
+    for _ in range(3):  # Añadimos las cartas de +2
+        for color in colores[1:]:
+            # nos permite agregar nuevas cartas a la baraja
+            baraja.append({"color": color, "valor": "+2", "robar": 2})
+            baraja.append(
+                {"color": color, "valor": "CAMBIO_SENTIDO", "robar": 0})
+            baraja.append({"color": color, "valor": "BLOQUEO", "robar": 0})
+    rd.shuffle(baraja)  # reorganiza el orden de la baraja
+    return baraja
+
     #Funcion que te dice el tipo de carta
     def pintarCartas(self):
     #Funcion que comprueba si la carta es especial, es decir, Negra
