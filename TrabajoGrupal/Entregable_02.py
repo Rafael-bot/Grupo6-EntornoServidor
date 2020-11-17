@@ -64,7 +64,16 @@ def pintarCarta(carta):  # esta funcion indica el tipo de carta que es de la var
     return ((carta["color"] + " ") if carta["color"] != "NEGRO" else "") + carta["valor"] + (  # retorna un calor y un numero
         "(" + str(carta["robar"]) + ")" if carta["robar"] > 0 else "")
     #Funcion que comprueba si la carta es especial, es decir, Negra
-    def cumplirRegla(self):
+# esta funcion indica que la carta que se ha escogido sea valida
+
+
+def cumpleLasReglas(cartaEscogida, cartaEnMesa):
+    # si la carta tiene color y tipo negro cumple una funcion especifica
+    if cartaEscogida["color"] == "NEGRO":
+        return True
+    else:  # sino es negro definirme cual es e imprime que valor y color tiene
+        return cartaEnMesa["color"] == cartaEscogida["color"] or cartaEnMesa["valor"] == cartaEscogida["valor"]
+
 
 
 #Clase de Jugadores
