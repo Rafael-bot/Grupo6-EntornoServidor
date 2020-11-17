@@ -59,8 +59,10 @@ def crearBaraja(self):
     rd.shuffle(baraja)  # reorganiza el orden de la baraja
     return baraja
 
-    #Funcion que te dice el tipo de carta
-    def pintarCartas(self):
+   
+def pintarCarta(carta):  # esta funcion indica el tipo de carta que es de la variable carta le da un color y un valor
+    return ((carta["color"] + " ") if carta["color"] != "NEGRO" else "") + carta["valor"] + (  # retorna un calor y un numero
+        "(" + str(carta["robar"]) + ")" if carta["robar"] > 0 else "")
     #Funcion que comprueba si la carta es especial, es decir, Negra
     def cumplirRegla(self):
 
