@@ -48,7 +48,37 @@ class Baraja:
 class Jugadores:
 
     #Funcion que te muestra tu baraja
-    def mostrarMano(self):
+    # el atributo controlIA para mostrar la baraja si es un jugador, si es false es la IA  y si es true es el jugador
+    # el atributo cardMesa para pintar la ultima carata de la mesa
+    def mostrarMano(self, jugador, control_ia=False, card_mesa=None):
+        # Variable que enumera las cartas del mazo
+        enum_mazo = 1
+        # Variable que hace los saltos de lineas
+        cont_column = 0
+        # Variable del resultado de la funcion. Es la cadena de salida
+        result = ''
+        # Bucle con el que iremos añadiendo las cartas del mazo del jugador a la variable result
+        for card in jugador['mano']:
+            #Si la variable controlIA es true significa que es el mazo del jugador y se imprimira, si no es de la IA no imprimira nada
+            if(control_ia):
+                # Variable donde vamos guardando las cartas
+                carta_mazo = f'{str(enum_mazo)}. '
+            else:
+                carta_mazo = ''
+            #Le añadimos la carta con la funcion pintar carta que retornara la carta
+            carta_mazo += Baraja.pintarCarta(card)
+            if(cont_column > 0):
+                result+=f'\t{carta_mazo.ljust(15, " ")}'#Le añadimos un tabulador con la carta y el ljust le añadimos 15 espacios
+            else:
+                result+=f'\n{carta_mazo.ljust(15, " ")}'#Le añadimos el salto de linea
+            #Si la variable del contador de las columnas llega a 2 significa que se ha agregado las 3 columnas
+            if (cont_column == 2):
+                cont_column = 0 #Le ponemos otra vez el valor a cero para la siguiente fila, para que haga el salto de linea
+            else:
+                cont_column += 1
+            enum_mazo += 1
+        #Imprimimos el resultado
+        print(result)
 
     #Funcion de escoger color
     def escogerColor(self):
@@ -61,7 +91,7 @@ class Jugadores:
             cont_colors = 1#Es 1 para que no coja el color negro
             for c in colors[1:]:
                 print(f'{c}.{str(cont_colors)} ')   
-                cont_colors +1
+                cont_colors +=1
             #Le pedimos al usuario que elija el color con un numero
             colorElegido = input("Escoge color: ")
             #El bucle se termina cuando sea elegido un numero, no sea elegido el negro y si no te has pasado de rango
