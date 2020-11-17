@@ -21,6 +21,8 @@
 # y es llamado "UNO" y será un juego de tú contra la máquina. Si no sabes en qué
 # consiste el juego "UNO", aquí te dejo un video: https://www.youtube.com/watch?v=MxnkDj8PIxQ&ab_channel=LIMITLESS
 
+#Importamos la lib random
+import random
 
 #Array de los colores
 colors = ['Negra','Roja','Azul','Verde','Amarilla']
@@ -37,40 +39,40 @@ jugadores = [
 #Clase de Barajas
 class Baraja:
     #Funcion que creara la baraja de cada jugador
-def crearBaraja(self):
-    baraja = []  # este array vacio pide al usuario que introduzca la baraja
-    for carta in range(0, 9):  # aqui le damos valores a tomar desde el 0 al 9
-        for color in colores[1:]:
-            for _ in range(2 if carta > 0 else 1):
-                baraja.append(
-                    {"color": color, "valor": str(carta), "robar": 0})
-    for _ in range(4):  # Añadimos las cartas especiales
-        baraja.append({"color": "NEGRO", "valor": "+4", "robar": 4})
-        # nos permite agregar nuevas cartas a la baraja
-        baraja.append({"color": "NEGRO", "valor": "CAMBIO_COLOR", "robar": 0})
-
-    for _ in range(3):  # Añadimos las cartas de +2
-        for color in colores[1:]:
+    def crearBaraja(self):
+        baraja = []  # este array vacio pide al usuario que introduzca la baraja
+        for carta in range(0, 9):  # aqui le damos valores a tomar desde el 0 al 9
+            for color in colors[1:]:
+                for _ in range(2 if carta > 0 else 1):
+                    baraja.append(
+                        {"color": color, "valor": str(carta), "robar": 0})
+        for _ in range(4):  # Añadimos las cartas especiales
+            baraja.append({"color": "NEGRO", "valor": "+4", "robar": 4})
             # nos permite agregar nuevas cartas a la baraja
-            baraja.append({"color": color, "valor": "+2", "robar": 2})
-            baraja.append(
-                {"color": color, "valor": "CAMBIO_SENTIDO", "robar": 0})
-            baraja.append({"color": color, "valor": "BLOQUEO", "robar": 0})
-    rd.shuffle(baraja)  # reorganiza el orden de la baraja
-    return baraja
+            baraja.append({"color": "NEGRO", "valor": "CAMBIO_COLOR", "robar": 0})
 
-   
-def pintarCarta(carta):  # esta funcion indica el tipo de carta que es de la variable carta le da un color y un valor
-    return ((carta["color"] + " ") if carta["color"] != "NEGRO" else "") + carta["valor"] + (  # retorna un calor y un numero
-        "(" + str(carta["robar"]) + ")" if carta["robar"] > 0 else "")
-    #Funcion que comprueba si la carta es especial, es decir, Negra
+        for _ in range(3):  # Añadimos las cartas de +2
+            for color in colors[1:]:
+                # nos permite agregar nuevas cartas a la baraja
+                baraja.append({"color": color, "valor": "+2", "robar": 2})
+                baraja.append(
+                    {"color": color, "valor": "CAMBIO_SENTIDO", "robar": 0})
+                baraja.append({"color": color, "valor": "BLOQUEO", "robar": 0})
+        random.shuffle(baraja)  # reorganiza el orden de la baraja
+        return baraja
 
-def cumpleLasReglas(cartaEscogida, cartaEnMesa):
-    # si la carta tiene color y tipo negro cumple una funcion especifica
-    if cartaEscogida["color"] == "NEGRO":
-        return True
-    else:  # sino es negro definirme cual es e imprime que valor y color tiene
-        return cartaEnMesa["color"] == cartaEscogida["color"] or cartaEnMesa["valor"] == cartaEscogida["valor"]
+
+    def pintarCarta(self,carta):  # esta funcion indica el tipo de carta que es de la variable carta le da un color y un valor
+        return ((carta["color"] + " ") if carta["color"] != "NEGRO" else "") + carta["valor"] + (  # retorna un calor y un numero
+            "(" + str(carta["robar"]) + ")" if carta["robar"] > 0 else "")
+        #Funcion que comprueba si la carta es especial, es decir, Negra
+
+    def cumpleLasReglas(self,cartaEscogida, cartaEnMesa):
+        # si la carta tiene color y tipo negro cumple una funcion especifica
+        if cartaEscogida["color"] == "NEGRO":
+            return True
+        else:  # sino es negro definirme cual es e imprime que valor y color tiene
+            return cartaEnMesa["color"] == cartaEscogida["color"] or cartaEnMesa["valor"] == cartaEscogida["valor"]
 
 
 
