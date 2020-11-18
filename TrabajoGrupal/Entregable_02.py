@@ -47,9 +47,9 @@ class Baraja:
                     baraja.append(
                         {"color": color, "valor": str(carta), "robar": 0})
         for _ in range(4):  # Añadimos las cartas especiales
-            baraja.append({"color": "NEGRO", "valor": "+4", "robar": 4})
+            baraja.append({"color": "Negra", "valor": "+4", "robar": 4})
             # nos permite agregar nuevas cartas a la baraja
-            baraja.append({"color": "NEGRO", "valor": "CAMBIO_COLOR", "robar": 0})
+            baraja.append({"color": "Negra", "valor": "CAMBIO_COLOR", "robar": 0})
 
         for _ in range(3):  # Añadimos las cartas de +2
             for color in colors[1:]:
@@ -63,13 +63,13 @@ class Baraja:
 
 
     def pintarCarta(self,carta):  # esta funcion indica el tipo de carta que es de la variable carta le da un color y un valor
-        return ((carta["color"] + " ") if carta["color"] != "NEGRO" else "") + carta["valor"] + (  # retorna un calor y un numero
+        return ((carta["color"] + " ") if carta["color"] != "Negra" else "") + carta["valor"] + (  # retorna un calor y un numero
             "(" + str(carta["robar"]) + ")" if carta["robar"] > 0 else "")
         #Funcion que comprueba si la carta es especial, es decir, Negra
 
     def cumpleLasReglas(self,cartaEscogida, cartaEnMesa):
         # si la carta tiene color y tipo negro cumple una funcion especifica
-        if cartaEscogida["color"] == "NEGRO":
+        if cartaEscogida["color"] == "Negra":
             return True
         else:  # sino es negro definirme cual es e imprime que valor y color tiene
             return cartaEnMesa["color"] == cartaEscogida["color"] or cartaEnMesa["valor"] == cartaEscogida["valor"]
@@ -125,7 +125,7 @@ class Jugadores:
                 print(f'{c}.{str(cont_colors)} ')   
                 cont_colors +=1
             #Le pedimos al usuario que elija el color con un numero
-            colorElegido = input("Escoge color: ")
+            colorElegido = input("Elige color: ")
             #El bucle se termina cuando sea elegido un numero, no sea elegido el negro y si no te has pasado de rango
             if(colorElegido.isnumeric() and int(colorElegido) > 0 and int(colorElegido) <= len(colors) - 1):
                 control = False
@@ -149,7 +149,31 @@ class Jugadores:
         return baraja
 
     #Funcion que contrale los robos
-    def controRobos(self):
+    def controRobos(self, jugador, cartaMesa, baraja):
+        #Si el valor de la carta es +4 robara 4 cartas
+        if (cartaMesa["valor"] == "+4"):
+            print('ROBA 4 CARTAS.')
+            # Variable donde le guardamos la baraja actualizada
+            baraja_actualizada = self.robar(jugador, 4, baraja)
+            # Le damos el valor de robo 0, para marcar que esa carta se ha tirado, ya que esta en la mesa
+            cartaMesa["robar"] = 0
+        # Si el valor de la carta es +2 y el valor de robo de la carta es mayor que 0
+        elif (cartaMesa["valor"] == "+2" and cartaMesa["robar"] > 0):
+            # Variable booleana que utilizaremos para tirar los mismos mas dos
+            masdoses = False
+            # Bucle que recorre el mazo del jugador para tirar todos los mismos +2 del mazo
+            for carta in jugador["mano"]:
+                masdoses = masdoses or carta["valor"] == '+2' # Si la cartar tiene como valor +2 dara true
+            # Solo entrara si masdoses es false, porque significa que no ha encontrado mas +2
+            if not masdoses:
+                # Imprimimos el numeros de cartas a robar
+                print(f'ROBA -> {str(cartaMesa["robar"])} CARTAS.')
+                # le guardamos la baraja actualizada
+                baraja_actualizada = self.robar(jugador, cartaMesa["robar"], baraja)
+                # Le damos el valor de robo 0, para marcar que esa carta se ha tirado, ya que esta en la mesa
+                cartaMesa["robar"] = 0
+        # Retornamos la baraja actualizada
+        return baraja_actualizada
 
     #Funcion para escoger carta y se aplique
     def escogerCarta(self):
