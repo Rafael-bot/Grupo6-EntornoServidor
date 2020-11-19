@@ -23,19 +23,12 @@
 
 # Importamos la lib random
 import random
-
 # Array de los colores
-colors = ['Negra', 'Roja', 'Azul', 'Verde', 'Amarilla']
+colors = ['Negra', 'Azul', 'Verde', 'Roja', 'Amarilla']
 # Array de la  baraja de cartas sin cojer
 baraja = []
 # Array del montón en la mesa
 monton = []
-# Array de los dos jugadores del Jugador y de la IA
-jugadores = [
-    {"nombre": "", "mano": [], "tipo": "HUMANO"},
-    {"nombre": "JuanIA", "mano": [], "tipo": "IA"}
-]
-
 
 # Clase de Barajas
 class Baraja:
@@ -62,8 +55,7 @@ class Baraja:
         random.shuffle(baraja)  # reorganiza el orden de la baraja
         return baraja
 
-    def pintarCarta(self,
-                    carta):  # esta funcion indica el tipo de carta que es de la variable carta le da un color y un valor
+    def pintarCarta(self,carta):  # esta funcion indica el tipo de carta que es de la variable carta le da un color y un valor
         return ((carta["color"] + " ") if carta["color"] != "Negra" else "") + carta["valor"] + (
         # retorna un calor y un numero
             "(" + str(carta["robar"]) + ")" if carta["robar"] > 0 else "")
@@ -79,39 +71,30 @@ class Baraja:
 
 # Clase de Jugadores
 class Jugadores:
-
     # Funcion que te muestra tu baraja
     # el atributo controlIA para mostrar la baraja si es un jugador, si es false es la IA  y si es true es el jugador
     # el atributo cardMesa para pintar la ultima carata de la mesa
     def mostrarMano(self, jugador, control_ia=False, card_mesa=None):
-        # Variable que enumera las cartas del mazo
-        enum_mazo = 1
-        # Variable que hace los saltos de lineas
-        cont_column = 0
-        # Variable del resultado de la funcion. Es la cadena de salida
-        result = ''
-        # Bucle con el que iremos añadiendo las cartas del mazo del jugador a la variable result
-        for card in jugador['mano']:
-            # Si la variable controlIA es true significa que es el mazo del jugador y se imprimira, si no es de la IA no imprimira nada
-            if (control_ia):
-                # Variable donde vamos guardando las cartas
-                carta_mazo = f'{str(enum_mazo)}. '
-            else:
-                carta_mazo = ''
+        i = 1 # Variable que enumera las cartas del mazo
+        col = 0 # Variable que hace los saltos de lineas
+        cadenaSalida = "" # Variable del resultado de la funcion. Es la cadena de salida
+        for carta in jugador["mano"]: # Bucle con el que iremos añadiendo las cartas del mazo del jugador a la variable result
+            # Variable donde vamos guardando las cartas
+            textoCarta = ((str(i) + ". " if control_ia else "")) # Si la variable controlIA es true significa que es el mazo del jugador y se imprimira, si no es de la IA no imprimira nada
             # Le añadimos la carta con la funcion pintar carta que retornara la carta
-            carta_mazo += Baraja.pintarCarta(card)
-            if (cont_column > 0):
-                result += f'\t{carta_mazo.ljust(15, " ")}'  # Le añadimos un tabulador con la carta y el ljust le añadimos 15 espacios
+            if card_mesa != None and Baraja().cumpleLasReglas(carta, card_mesa):
+                textoCarta += Baraja().pintarCarta(carta)
             else:
-                result += f'\n{carta_mazo.ljust(15, " ")}'  # Le añadimos el salto de linea
-            # Si la variable del contador de las columnas llega a 2 significa que se ha agregado las 3 columnas
-            if (cont_column == 2):
-                cont_column = 0  # Le ponemos otra vez el valor a cero para la siguiente fila, para que haga el salto de linea
+                textoCarta += Baraja().pintarCarta(carta)
+            # Le añadimos el salto de linea
+            cadenaSalida += ("\t" if col > 0 else "\r\n") + textoCarta.ljust(20, " ")# Le añadimos un tabulador con la carta y el ljust le añadimos 15 espacios si se cumple la condicion
+            if (col == 3):#4 Columnas
+                col = 0# Le ponemos otra vez el valor a cero para la siguiente fila, para que haga el salto de linea
             else:
-                cont_column += 1
-            enum_mazo += 1
+                col += 1
+            i += 1
         # Imprimimos el resultado
-        print(result)
+        print(cadenaSalida)
 
     # Funcion de escoger color
     def escogerColor(self):
@@ -150,12 +133,12 @@ class Jugadores:
         return baraja
 
     # Funcion que contrale los robos
-    def controRobos(self, jugador, cartaMesa, baraja):
+    def controlaRobos(self, jugador, cartaMesa, baraja):
         # Si el valor de la carta es +4 robara 4 cartas
         if (cartaMesa["valor"] == "+4"):
             print('ROBA 4 CARTAS.')
             # Variable donde le guardamos la baraja actualizada
-            baraja_actualizada = self.robar(jugador, 4, baraja)
+            baraja = self.robar(jugador, 4, baraja)
             # Le damos el valor de robo 0, para marcar que esa carta se ha tirado, ya que esta en la mesa
             cartaMesa["robar"] = 0
         # Si el valor de la carta es +2 y el valor de robo de la carta es mayor que 0
@@ -170,11 +153,11 @@ class Jugadores:
                 # Imprimimos el numeros de cartas a robar
                 print(f'ROBA -> {str(cartaMesa["robar"])} CARTAS.')
                 # le guardamos la baraja actualizada
-                baraja_actualizada = self.robar(jugador, cartaMesa["robar"], baraja)
+                baraja = self.robar(jugador, cartaMesa["robar"], baraja)
                 # Le damos el valor de robo 0, para marcar que esa carta se ha tirado, ya que esta en la mesa
                 cartaMesa["robar"] = 0
         # Retornamos la baraja actualizada
-        return baraja_actualizada
+        return baraja
 
     # Funcion para escoger carta y se aplique
     def escogerCarta(self, jugador, cartaEnMesa, baraja):
@@ -187,7 +170,7 @@ class Jugadores:
             # Recogemos la funcion mostrarMano y sus datos.
             self.mostrarMano(jugador, True, cartaEnMesa)
             # Pintamos la ultima del monton en la mesa.
-            print("\nCarta de la mesa: ", Baraja.pintarCarta(monton[-1]))
+            print("\nCarta de la mesa: ", Baraja().pintarCarta(monton[-1]))
             # Escogemos la carta. || .capitalize() convierte la primera letra en mayusculas.
             idCartaEscogida = input("Escoge la carta que tiraras (R para robar " + str(len(baraja)) + "):").capitalize()
             # idCartaEscogida = input(f'Escoge la carta que tiraras (R) Robar{str(len(baraja))}:').capitalize()
@@ -202,11 +185,11 @@ class Jugadores:
                 # Variable que recogera la ultima carta que se encuentra en la mano del jugador.
                 cartaEscogida = jugador["mano"][int(idCartaEscogida) - 1]
                 # Condicion control de reglas.
-                if Baraja.cumpleLasReglas(cartaEscogida, cartaEnMesa):
+                if Baraja().cumpleLasReglas(cartaEscogida, cartaEnMesa):
                     # Sobre escribir la mano del jugador.
                     jugador["mano"] = jugador["mano"][0:int(idCartaEscogida) - 1] + jugador["mano"][int(idCartaEscogida):]
                     # Si la carta es especial y de escoger color, se realiza la función escogerColor y se para el bucle.
-                    if (cartaEscogida["color"] == "NEGRO"):
+                    if (cartaEscogida["color"] == "Negra"):
                         cartaEscogida["color"] = self.escogerColor()
                     control_bucle = False
                 else:
@@ -229,9 +212,9 @@ class Jugadores:
 
             # Bucle que que comprueba que las cartas son validas.
             for i, carta in enumerate(jugador["mano"]):
-                if Baraja.cumpleLasReglas(carta, cartaEnMesa):
+                if Baraja().cumpleLasReglas(carta, cartaEnMesa):
                     cartasValidas.append(i)
-                if carta["color"] != "NEGRO":
+                if carta["color"] != "Negra":
                     if carta["color"] in cartasColor:
                         cartasColor[carta["color"]] += 1
                     else:
@@ -261,7 +244,7 @@ class Jugadores:
                         if not jugador["mano"][idCarta]["valor"].isnumeric():
                             idCartaSeleccionada = idCarta
                 # Si en la mano del jugador el id es el de una carta especial (NEGRO)
-                if jugador["mano"][idCartaSeleccionada]["color"] == "NEGRO":
+                if jugador["mano"][idCartaSeleccionada]["color"] == "Negra":
                     color = ""
                     colorNumero = 0
                     # Recogemos color de las cartas y le asignamos un numero.
@@ -285,7 +268,60 @@ class Jugadores:
 ######################
 # Con esta funcion se iniciara el programa
 def start():
-    print("Welcome to UNO, let's begin...")
+
+    baraja = Baraja().crearBaraja()#Llenamos la baraja
+
+    #Lista de jugadores
+    jugadores = [
+        {"nombre": "", "mano": [], "tipo": "HUMANO"},
+        {"nombre": "RichardIA", "mano": [], "tipo": "IA"}
+    ]
+    #El usuario introduce su nombre en el juego
+    jugadores[0]["nombre"] = input("Dime tu nombre:")
+    #Bucle que reparte las cartas de la baraja a cada jugador
+    for _ in range(7):
+        for jugador in jugadores:
+            jugador["mano"].append(baraja[0])#Añadimos la carta al jugador
+            baraja = baraja[1:]
+
+    monton.append(baraja[0])#Sacamos la primera carta a la mesa
+    baraja = baraja[1:]#Guardamos el resto de cartar al mazo
+    if (monton[0]["color"] == "Negra"):
+        monton[0]["color"] = random.choice(colors[1:])
+
+    continuar = True #Variable que controla si la partida termina o no
+    idJugador = 0 #Variable que controla que selecciona el jugador
+    direccionJuego = +1 #Varaible que controla al direccion de la partida
+    numeroJugadores = len(jugadores) #Variable de numeros de jugadores
+
+    while continuar:#Partida
+
+        if len(baraja) <= 0:#Si la baraja no tienes mas cartas se a terminado la partida
+            continuar = False #Termina la partida
+        if monton[-1]["valor"] == "SALTO":
+            idJugador += direccionJuego
+            idJugador = (numeroJugadores + idJugador) if idJugador < 0 else idJugador % numeroJugadores
+        jugador = jugadores[idJugador]
+        print("\r\nTurno de " + jugador["nombre"])
+        baraja = Jugadores().controlaRobos(jugador, monton[-1], baraja)#Controlamos la sumas de robos d
+        # e +2 y +4 con la funcion controlaRobos
+        #Solo IA
+        if jugador["tipo"] == "IA":
+            #DIrectamente selecciona la carta automaticamente con la funcion jugarCarta
+            cartaEscogida, baraja = Jugadores().jugarCarta(jugador, monton[-1], baraja)
+            print("\tTira " + Baraja().pintarCarta(cartaEscogida))#La pinta con la funcion pintaCarta
+        else:#Jugador
+            cartaEscogida, baraja = Jugadores().escogerCarta(jugador, monton[-1], baraja)#Seleccionamos la carta. Retorna la carta elegida y la baraja actualizada
+        if cartaEscogida != None:
+            cartaEscogida["robar"] += monton[-1]["robar"]
+            monton.append(cartaEscogida)#Añadimos las cartas +2 o +4 al mazo de la mesa
+        if len(jugador["mano"]) == 0:
+            continuar = False
+            print(jugador["nombre"] + "  GANA LA PARTIDA")#Gana el jugador
+        if monton[-1]["valor"] == "CAMBIO":
+            direccionJuego *= -1
+        idJugador += direccionJuego
+        idJugador = (numeroJugadores + idJugador) if idJugador < 0 else idJugador % numeroJugadores
 
 # Usa los conocimientos adquiridos junto con algo de lógica para jugar un juego de "UNO"!
 
