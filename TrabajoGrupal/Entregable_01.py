@@ -7,14 +7,14 @@
 
 # GRUPO:
 # INTEGRANTE 1:
-#   APELLIDOS, NOMBRE: ORTEGA CHINCHILLA, ANTONIO
-#   DNI: 30266794J
+#   APELLIDOS, NOMBRE: JIMENEZ SANCHEZ BERNY
+#   DNI: Y6177914J
 # INTEGRANTE 2:
-#   APELLIDOS, NOMBRE:
-#   DNI:
+#   APELLIDOS, NOMBRE: OLIVA RAMIREZ RAFAEL
+#   DNI:30251108J
 # INTEGRANTE 3:
-#   APELLIDOS, NOMBRE:
-#   DNI:
+#   APELLIDOS, NOMBRE: ORTEGA CHINCHILLA ANTONIO VLADIMIR
+#   DNI: 30266794J
 
 # Escribir el código Python de las funciones que se piden en el
 # espacio que se indica en cada ejercicio.
@@ -96,23 +96,29 @@
 # Los hijos de Francisco son Jose y Rafael
 
 def sustituye_patrones(frase, fichero):
+
+    #Controlamos mediante un try, except los posibles errores de la función.
     try:
+        #Abrimos el fichero(solo lectura 'r') y lo cuardamos en una variable.
         archivo = open(fichero, 'r')
-        tests = [linea.rstrip('\n').split(':') for linea in archivo]
-        for test in tests:
+        #Guardamos los datos separados por un salto de linea('\n') en un array, a su misma vez creamos arrays dentro de este de los elementos separados por ':'.
+        array_2D_de_nombres = [linea.rstrip('\n').split(':') for linea in archivo]
+        #Bucle funcional que realiza la actividad por cada elemento del array bidimensional.
+        for elemento in array_2D_de_nombres:
+            #Guardamos la frase que le pasaremos en una variable.
             texto = frase
-            for idx in range(len(test)):
-                texto = texto.replace(str(idx), test[idx])
+            #Este bucle recorre cada idx = indice = elemento, de los arrays que forman el array 2D.
+            for idx in range(len(elemento)):
+                #Reemplaza los elementos numéricos de la frase por los elementos en la posición correspondiente de los arrays.
+                texto = texto.replace(str(idx), elemento[idx])
 
             print(texto)
     except IOError:
+        #Mensaje de error.
         print("No se ha encontrado el archivo.")
     finally:
+        #Cerrar el archivo.
         archivo.close()
-
-
-sustituye_patrones("1 me dijo que 0 vendría con 2", "sustituciones.txt")
-
 
 # Nótese que:
 # - Supondremos que en la frase de entrada las palabras se separan mediante un
@@ -255,8 +261,6 @@ def imprime_usuarios(rutatxt):
     finally:
         archivo.close()
 
-
-imprime_usuarios("nombres.txt")
 # -----------------------------------------------------------------------------
 # EJERCICIO 3) EL DECODIFICADOR
 
@@ -300,49 +304,50 @@ imprime_usuarios("nombres.txt")
 # sencillo juego:
 
 import random
+def juego_decodificador():
+    print("¡Bienvenido al decodificador!")
 
-valores = ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9')
+    valores = ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9')
 
-cant_digitos = 3
-codigo = ''
+    cant_digitos = 3
+    codigo = ''
 
-for i in range(cant_digitos):
-    candidato = random.choice(valores)
-
-    while candidato in codigo:
-        candidato = random.choice(valores)
-    codigo = codigo + candidato
-
-print("¡Bienvenido al decodificador!")
-print("Tienes que adivinar un numero de ", cant_digitos,
-      "cifras distintas")
-propuesta = input('¿Cuál es tú apuesta?: ')
-
-intentos = 3
-while propuesta != codigo and propuesta != 'looser':
-    intentos = intentos + 1
-    aciertos = 0
-    coincidencias = 0
     for i in range(cant_digitos):
-        if propuesta[i] == codigo[i]:
-            aciertos = aciertos + 1
-        elif propuesta[i] in codigo:
-            coincidencias = coincidencias + 1
-    print("Tu propuesta (", propuesta, ") tiene", aciertos,
-          "aciertos y ", coincidencias, "coincidencias.")
+        candidato = random.choice(valores)
 
-    if coincidencias == 3:
-        print("¡Casi!, reordénalos.")
-    elif coincidencias == 2:
-        print(" Cerca, ¡sigue así!")
-    elif candidato == propuesta:
+        while candidato in codigo:
+            candidato = random.choice(valores)
+        codigo = codigo + candidato
+
+    print("Tienes que adivinar un numero de ", cant_digitos,
+          "cifras distintas")
+    propuesta = input('¿Cuál es tú apuesta?: ')
+
+    intentos = 3
+    while propuesta != codigo and propuesta != 'looser':
+        intentos = intentos + 1
+        aciertos = 0
+        coincidencias = 0
+        for i in range(cant_digitos):
+            if propuesta[i] == codigo[i]:
+                aciertos = aciertos + 1
+            elif propuesta[i] in codigo:
+                coincidencias = coincidencias + 1
+        print("Tu propuesta (", propuesta, ") tiene", aciertos,
+              "aciertos y ", coincidencias, "coincidencias.")
+
+        if coincidencias == 3:
+            print("¡Casi!, reordénalos.")
+        elif coincidencias == 2:
+            print(" Cerca, ¡sigue así!")
+        elif candidato == propuesta:
+            print("¡Enhorabuena, ahora eres un hacker! ",
+                  intentos, "intentos realizados")
+        propuesta = input("Nada, inténtalo de nuevo.  ")
+
+    if propuesta == 'looser':
+        print("El codigo era", codigo)
+        print("Suerte la proxima vez!")
+    else:
         print("¡Enhorabuena, ahora eres un hacker! ",
               intentos, "intentos realizados")
-    propuesta = input("Nada, inténtalo de nuevo.  ")
-
-if propuesta == 'looser':
-    print("El codigo era", codigo)
-    print("Suerte la proxima vez!")
-else:
-    print("¡Enhorabuena, ahora eres un hacker! ",
-          intentos, "intentos realizados")
