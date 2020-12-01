@@ -40,10 +40,10 @@ Obtenemos el token en este [link](https://developer.gitter.im/apps).
 
 ### **PARAMETRO DE ENTRADA**
  - status: **Boolean** *True si el mensaje esta actualizado **NO SE PUEDE ACTUALIZAR** y False si el mensaje no esta actualizado **SI SE PUEDE ACTUALIZAR**.*
-
-### BODY
- - text: **String** *Texto por el que se va a actualizar el mensaje.*
- `{"text":"Mensaje enviado desde postman"}`
+ - text: **String** *Texto por el que se va a actualizar el mensaje. Esto va en el body de la peticion.*
+ `{
+ 	"text":"Mensaje enviado desde postman"
+ }`
 	 
 
 ### **PARAMETRO DE SALIDA**
