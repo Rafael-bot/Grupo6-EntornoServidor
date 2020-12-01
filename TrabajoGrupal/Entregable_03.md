@@ -23,8 +23,55 @@ En el primer post utilizaremos la [API TRELLO](https://developer.atlassian.com/c
 - idBoard: **String** *Id de la tabla donde se crea la lista.*
 - limits: **Array** *Limite de elementos que se puede añadir a la lista.*
 
-
 3. Como resultado final se agrego la lista de forma correcta.![enter image description here](https://i.imgur.com/Az3QWCl.png)
+
+
+## Segundo Post 
+En el segundo post utilizaremos la [API GITTER](https://developer.gitter.im/docs/welcome). Lo que estamos haciendo es enviar un mensaje en una sala. Para poder hacer las peteciones a esta api, necesitamos autenticarnos con el OAuth2.0 ![enter image description here](https://i.imgur.com/Da2x5Zu.png)
+Obtenemos el token en este [link](https://developer.gitter.im/apps).
+
+
+ 1. Primero tendremos que obtener el id de la room que se obtiene con  que se obtiene con la peticion 
+ `GET https://api.gitter.im/v1/rooms/`.
+![enter image description here](https://i.imgur.com/XwmDrlY.png)
+
+ 2. Le hacemos  la petición a esta url *https://api.gitter.im/v1/rooms/5fc4d04fd73408ce4ff54ae5/chatMessages*. 
+![enter image description here](https://i.imgur.com/qGVqWTT.png)
+
+### **PARAMETRO DE ENTRADA**
+ - status: **Boolean** *True si el mensaje esta actualizado **NO SE PUEDE ACTUALIZAR** y False si el mensaje no esta actualizado **SI SE PUEDE ACTUALIZAR**.*
+
+### BODY
+ - text: **String** *Texto por el que se va a actualizar el mensaje.*
+ `{"text":"Mensaje enviado desde postman"}`
+	 
+
+### **PARAMETRO DE SALIDA**
+- id: **String** *Id del mensaje	.*
+- text: **String** *Nombre de la lista.*
+- html: **String** *Html del mensaje.*
+- sent: **String** *Fecha en la que se envió el mensaje.*
+- unread: **Boolean** *True significa que no se a leído y False es que si se ha leído.*
+- readBy: **Int** *Números de usuario que han leído el mensaje.*
+- urls:**Array**  *Urls del mensaje.*
+- mentions:**Array** *Usuarios que hemos mencionado en el mensaje.*
+- issues:**Array**
+- meta:**Array**
+- v:**Int**
+- fromUser:**Objeto**
+	- id:**String** *Id del usuario.*
+	- username:**String** *Nombre del usuario.*
+	- displayName:**String** *Nombre del usuario.*
+	- url:**String** *Url del usuario.*
+	- avatarUrl:**String** *Url de la imagen del usuario.*
+	- avatarUrlSmall:**String** *Url dela imagen del usuario tamaño pequeño.*
+	- avatarUrlMedium:**String** *Url dela imagen del usuario tamaño medio.*
+	- v:**Int**
+	- gv:**String**
+
+
+3. Como resultado se envió el mensaje correctamente.![enter image description here](https://i.imgur.com/ZrTCm46.png)
+
 
 
 # Delete
