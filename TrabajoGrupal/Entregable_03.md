@@ -149,6 +149,30 @@ Realizaremos las peticioness **DELETE** en **GITTER** utilizando su  [api rest](
     
     ![Postman3](https://i.imgur.com/2AOHGbL.png)
 
+## Segundo delete
+
+1. Para empezar crearemos una sala nueva a la que hemos llamado **room delete menssage**, en esta crearemos o postearemos un mensaje, en mi caso  "Mensaje que será eliminado o eso espero".
+![Postman6](https://i.imgur.com/MY09BEj.png)
+
+2. Una vez publicado, mediante la sentencia GET a la dirección ```https://api.gitter.im/v1/rooms/chatMessages```, con ello podremos recoger en id del mensaje que precisamos obtener:
+![Postman9](https://i.imgur.com/sKxy6up.png)
+
+3. Procederemos a eliminar el mesaje:
+![Postman7](https://i.imgur.com/zYxhLKn.png)
+
+##### **PARAMETRO DE ENTRADA**
+- Al igual que en el anterior introduciremos como parametro de entrada el id del mensaje recogido anteriormente.
+
+
+##### **PARAMETRO DE SALIDA**
+
+- En mi caso no nos devuelve nada ya que hemos eliminado un elemento, y nos da el codigo 202 que indica que al borrarlo no hay contenido.
+   
+
+4. Finamente podemos ver que el mensaje ha sido eliminada.
+![Postman8](https://i.imgur.com/Bj3Dp9F.png)
+
+
 # PUT
 El método **Put** Crea un nuevo elemento o reemplaza una representación del elemento de destino con los datos de la petición.
 
