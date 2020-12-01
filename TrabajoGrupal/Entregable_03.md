@@ -85,6 +85,21 @@ En el primer get utilizaremos la [API SPOTIFY](https://developer.spotify.com/doc
 	
 Como resultado se envió el mensaje correctamente.![enter image description here](https://i.imgur.com/zdI2zZz.jpg)
 
+## Segundo Get 
+En el primer get utilizaremos la [API SPOTIFY](https://developer.spotify.com/documentation/web-api/). Lo que haremos sera realizar diferentes consultas a un usuario logado sin necesidad de introducir codigo.
+
+### **PARAMETRO DE ENTRADA**
+**Se obtienen las pistas disponibles de un album**
+- **OFFSET:**	Opcional . El índice de la primera pista que se devuelve. Por defecto: 0 (el primer objeto). Úselo con límite para obtener el siguiente conjunto de pistas.
+- **LIMIT:** Opcional . El número máximo de pistas para regresar. Predeterminado: 20. Mínimo: 1. Máximo: 50.
+- **MARKET:** Opcional . Un código de país ISO 3166-1 alpha-2 o la cadena from_token. Proporcione este parámetro si desea aplicar Track Relinking .
+- **ID:** El ID de Spotify del álbum.
+- **Authorization:** Requerido. Un token de acceso válido del servicio de cuentas de Spotify: consulte la Guía de autorización de API web para obtener más detalles.
+### **PARAMETRO DE SALIDA**
+- En caso de éxito, el código de estado HTTP en el encabezado de la respuesta es **200** correcto y el cuerpo de la respuesta contiene una matriz de objetos de seguimiento simplificados (envueltos en un objeto de paginación ) en formato JSON. En caso de error, el código de estado del encabezado es un código de error y el cuerpo de la respuesta contiene un objeto de error .
+	
+Como resultado se envió el mensaje correctamente.![enter image description here](https://i.imgur.com/1gwbIVQ.jpg)
+
 # Delete
 **Delete** es una sentencia de postman que permite eliminar elementos y recursos tanto del backend, base de datos, etc.
 
