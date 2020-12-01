@@ -100,6 +100,7 @@ En el primer get utilizaremos la [API SPOTIFY](https://developer.spotify.com/doc
 	
 Como resultado se envió el mensaje correctamente.![enter image description here](https://i.imgur.com/1gwbIVQ.jpg)
 
+
 # Delete
 **Delete** es una sentencia de postman que permite eliminar elementos y recursos tanto del backend, base de datos, etc.
 
@@ -170,3 +171,47 @@ Como resultado se envió el mensaje correctamente.![enter image description here
 
 Se corrobora resultado
 ![enter image description here](https://i.imgur.com/vqHQb0j.jpg)
+
+## Segundo Put
+En el segundo put utilizaremos la [API GITTER](https://developer.gitter.im/docs/welcome). Lo que estamos actualizar el contenido de un mensaje de una sala.
+
+
+ 1. Primero tendremos que obtener el id de la tabla que se ubica en la url de la room con esta petición 
+	 `GET https://api.gitter.im/v1/rooms/` y id del mensaje  con esta petición `GET https://api.gitter.im/v1/rooms/{idRoom}/chatMessages/`
+![enter image description here](https://i.imgur.com/1rUEaIb.png)
+
+ 2. Le hacemos la peticion a esta url *https://api.gitter.im/v1/rooms/5fc4d04fd73408ce4ff54ae5/chatMessages/*. 
+![enter image description here](https://i.imgur.com/FPKFzQl.png)
+
+##### **PARAMETRO DE ENTRADA**
+- text: **String**  *Texto por el que  se modifica contenido del mensaje. Esto va en el **body** de la petición*    `{"text":"Mensaje modificado"}`
+
+##### **PARAMETRO DE SALIDA**
+- id: **String** *Id del mensaje*
+- text: **String** *Texto  del mensaje.*
+- html: **String** *Html del mensaje.*
+- sent: **String** *Posición de la lista.*
+- editedAt: **String** *Fecha de la modificación.*
+-   unread:  **Boolean**  _True significa que no se a leído y False es que si se ha leído._
+-   readBy:  **Int**  _Números de usuario que han leído el mensaje._
+-   urls:**Array**  _Urls del mensaje._
+-   mentions:**Array**  _Usuarios que hemos mencionado en el mensaje._
+-   issues:**Array**
+-   meta:**Array**
+-   v:**Int**
+fromUser:**Objeto**
+-   id:**String**  _Id del usuario._
+-   username:**String**  _Nombre del usuario._
+-   displayName:**String**  _Nombre del usuario._
+-   url:**String**  _Url del usuario._
+-   avatarUrl:**String**  _Url de la imagen del usuario._
+-   avatarUrlSmall:**String**  _Url dela imagen del usuario tamaño pequeño._
+-   avatarUrlMedium:**String**  _Url dela imagen del usuario tamaño medio._
+-   v:**Int**
+-   gv:**String**
+
+
+3. Como resultado final se modifico el contenido del mensaje.
+![enter image description here](https://i.imgur.com/kzZgvDo.png)
+
+
