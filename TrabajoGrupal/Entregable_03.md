@@ -148,3 +148,25 @@ Realizaremos las peticioness **DELETE** en **GITTER** utilizando su  [api rest](
     
     ![Postman3](https://i.imgur.com/2AOHGbL.png)
 
+# PUT
+El método **Put** Crea un nuevo elemento o reemplaza una representación del elemento de destino con los datos de la petición.
+
+## PRIMER PUT 
+En el primer PUT utilizaremos la [API SPOTIFY](https://developer.spotify.com/documentation/web-api/). Lo que haremos sera realizar diferentes consultas a un usuario logado sin necesidad de introducir codigo.
+
+### **PARAMETRO DE ENTRADA**
+**Cambiar los detalles de una lista de Reproduccion**
+ - **Playlist_id:** El ID de Spotify para la lista de reproducción.
+
+- **Authorization:** Requerido . Un token de acceso válido del servicio de cuentas de Spotify. El token de acceso debe haber sido emitido en nombre del usuario.
+Cambiar una lista de reproducción pública para un usuario requiere la autorización del playlist-modify-publicalcance; cambiar una lista de reproducción privada requiere el playlist-modify-privatealcance. 
+
+- **Tipo de contenido:** Requerido. El tipo de contenido del cuerpo de la solicitud:application/json
+
+### **PARAMETRO DE SALIDA**
+- En caso de éxito, el código de estado HTTP en el encabezado de respuesta es **200** correcto. En caso de error, el código de estado del encabezado es un código de error y el cuerpo de la respuesta contiene un objeto de error . Intentar cambiar una lista de reproducción cuando no tiene la autorización del usuario devuelve el error **403** Prohibido.
+	
+Como resultado se envió el mensaje correctamente.![enter image description here](https://i.imgur.com/NQWepbI.jpg)
+
+Se corrobora resultado
+![enter image description here](https://i.imgur.com/vqHQb0j.jpg)
