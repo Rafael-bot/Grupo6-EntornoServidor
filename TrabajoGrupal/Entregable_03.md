@@ -79,11 +79,11 @@ El método **Get** significa recuperar cualquier información (en forma de una e
 En el primer get utilizaremos la [API SPOTIFY](https://developer.spotify.com/documentation/web-api/). Lo que haremos sera realizr diferentes consultas a un usuario logado sin necesidad de introducir codigo.
 
 ### **PARAMETRO DE ENTRADA**
-	- **Authorization:** Requerido. Un token de acceso válido del servicio de cuentas de Spotify: consulte la Guía de autorización de API web para obtener más detalles. 		El token de acceso debe haber sido emitido en nombre de un usuario. El token de acceso debe tener el user-read-playback-statealcance autorizado para poder leer la            información.
+- **Authorization:** Requerido. Un token de acceso válido del servicio de cuentas de Spotify: consulte la Guía de autorización de API web para obtener más detalles. 		El token de acceso debe haber sido emitido en nombre de un usuario. El token de acceso debe tener el user-read-playback-statealcance autorizado para poder leer la            información.
 ### **PARAMETRO DE SALIDA**
-	- Una solicitud exitosa devolverá un **200 OK** código de respuesta con una carga útil json que contiene los objetos del dispositivo. Cuando no se                  	      encuentran dispositivos disponibles, la solicitud devolverá una respuesta **200 OK** con una lista de dispositivos vacía.
+- Una solicitud exitosa devolverá un **200 OK** código de respuesta con una carga útil json que contiene los objetos del dispositivo. Cuando no se                  	      encuentran dispositivos disponibles, la solicitud devolverá una respuesta **200 OK** con una lista de dispositivos vacía.
 	
-Como resultado se envió el mensaje correctamente.![enter image description here](https://imgur.com/zdI2zZ)
+Como resultado se envió el mensaje correctamente.![enter image description here](https://i.imgur.com/zdI2zZz.jpg)
 
 # Delete
 **Delete** es una sentencia de postman que permite eliminar elementos y recursos tanto del backend, base de datos, etc.
