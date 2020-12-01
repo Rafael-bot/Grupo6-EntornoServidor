@@ -1,7 +1,21 @@
-# Post
+# Index
+ - [Post](https://github.com/Rafael-bot/Grupo6-EntornoServidor/blob/Sprint-3/TrabajoGrupal/Entregable_03.md#post)
+	-  [Primer Post ](https://github.com/Rafael-bot/Grupo6-EntornoServidor/blob/Sprint-3/TrabajoGrupal/Entregable_03.md#primer-post)
+	- [Segundo Post ](https://github.com/Rafael-bot/Grupo6-EntornoServidor/blob/Sprint-3/TrabajoGrupal/Entregable_03.md#segundo-post)
+ - [Get](https://github.com/Rafael-bot/Grupo6-EntornoServidor/blob/Sprint-3/TrabajoGrupal/Entregable_03.md#get)
+	-  [Primer Get](https://github.com/Rafael-bot/Grupo6-EntornoServidor/blob/Sprint-3/TrabajoGrupal/Entregable_03.md#primer-get)
+	- [Segundo Get](https://github.com/Rafael-bot/Grupo6-EntornoServidor/blob/Sprint-3/TrabajoGrupal/Entregable_03.md#segundo-get)
+ - [Delete](https://github.com/Rafael-bot/Grupo6-EntornoServidor/blob/Sprint-3/TrabajoGrupal/Entregable_03.md#delete)
+	 - [Primer Delete](https://github.com/Rafael-bot/Grupo6-EntornoServidor/blob/Sprint-3/TrabajoGrupal/Entregable_03.md#primer-delete)
+	 - [Segundo Delete](https://github.com/Rafael-bot/Grupo6-EntornoServidor/blob/Sprint-3/TrabajoGrupal/Entregable_03.md#segundo-delete)
+ - [Put](https://github.com/Rafael-bot/Grupo6-EntornoServidor/blob/Sprint-3/TrabajoGrupal/Entregable_03.md#put)
+	 - [Primer Put](https://github.com/Rafael-bot/Grupo6-EntornoServidor/blob/Sprint-3/TrabajoGrupal/Entregable_03.md#primer-put)
+	 - [Segundo Put](https://github.com/Rafael-bot/Grupo6-EntornoServidor/blob/Sprint-3/TrabajoGrupal/Entregable_03.md#segundo-put)
+
+## Post
 El método **POST** es usado cuando se requiere enviar información al servidor como, por ejemplo, un archivo de actualización, información de formulario, etc. En otras palabras, éste método se usa cuando se necesita enviar una entidad para algún recurso determinado.
 
-## Primer Post 
+### Primer Post 
 En el primer post utilizaremos la [API TRELLO](https://developer.atlassian.com/cloud/trello/). Lo que estamos haciendo es crear una lista en un tablero trello.
 
  1. Primero tendremos que obtener el id de la tabla que se ubica en la url de la tabla *https://trello.com/b/**KF4hyh3s**/pepe*.
@@ -26,7 +40,7 @@ En el primer post utilizaremos la [API TRELLO](https://developer.atlassian.com/c
 3. Como resultado final se agrego la lista de forma correcta.![enter image description here](https://i.imgur.com/Az3QWCl.png)
 
 
-## Segundo Post 
+### Segundo Post 
 En el segundo post utilizaremos la [API GITTER](https://developer.gitter.im/docs/welcome). Lo que estamos haciendo es enviar un mensaje en una sala. Para poder hacer las peteciones a esta api, necesitamos autenticarnos con el OAuth2.0 ![enter image description here](https://i.imgur.com/Da2x5Zu.png)
 Obtenemos el token en este [link](https://developer.gitter.im/apps).
 
@@ -72,41 +86,41 @@ Obtenemos el token en este [link](https://developer.gitter.im/apps).
 
 3. Como resultado se envió el mensaje correctamente.![enter image description here](https://i.imgur.com/ZrTCm46.png)
 
-# GET
+## GET
 El método **Get** significa recuperar cualquier información (en forma de una entidad) identificada por el Request-URI.
 
-## Primer Get 
+### Primer Get 
 En el primer get utilizaremos la [API SPOTIFY](https://developer.spotify.com/documentation/web-api/). Lo que haremos sera realizr diferentes consultas a un usuario logado sin necesidad de introducir codigo.
 
-### **PARAMETRO DE ENTRADA**
+#### **PARAMETRO DE ENTRADA**
 - **Authorization:** Requerido. Un token de acceso válido del servicio de cuentas de Spotify: consulte la Guía de autorización de API web para obtener más detalles. 		El token de acceso debe haber sido emitido en nombre de un usuario. El token de acceso debe tener el user-read-playback-statealcance autorizado para poder leer la            información.
-### **PARAMETRO DE SALIDA**
+#### **PARAMETRO DE SALIDA**
 - Una solicitud exitosa devolverá un **200 OK** código de respuesta con una carga útil json que contiene los objetos del dispositivo. Cuando no se                  	      encuentran dispositivos disponibles, la solicitud devolverá una respuesta **200 OK** con una lista de dispositivos vacía.
 	
 Como resultado se envió el mensaje correctamente.![enter image description here](https://i.imgur.com/zdI2zZz.jpg)
 
-## Segundo Get 
+### Segundo Get 
 En el primer get utilizaremos la [API SPOTIFY](https://developer.spotify.com/documentation/web-api/). Lo que haremos sera realizar diferentes consultas a un usuario logado sin necesidad de introducir codigo.
 
-### **PARAMETRO DE ENTRADA**
+#### **PARAMETRO DE ENTRADA**
 **Se obtienen las pistas disponibles de un album**
 - **OFFSET:**	Opcional . El índice de la primera pista que se devuelve. Por defecto: 0 (el primer objeto). Úselo con límite para obtener el siguiente conjunto de pistas.
 - **LIMIT:** Opcional . El número máximo de pistas para regresar. Predeterminado: 20. Mínimo: 1. Máximo: 50.
 - **MARKET:** Opcional . Un código de país ISO 3166-1 alpha-2 o la cadena from_token. Proporcione este parámetro si desea aplicar Track Relinking .
 - **ID:** El ID de Spotify del álbum.
 - **Authorization:** Requerido. Un token de acceso válido del servicio de cuentas de Spotify: consulte la Guía de autorización de API web para obtener más detalles.
-### **PARAMETRO DE SALIDA**
+#### **PARAMETRO DE SALIDA**
 - En caso de éxito, el código de estado HTTP en el encabezado de la respuesta es **200** correcto y el cuerpo de la respuesta contiene una matriz de objetos de seguimiento simplificados (envueltos en un objeto de paginación ) en formato JSON. En caso de error, el código de estado del encabezado es un código de error y el cuerpo de la respuesta contiene un objeto de error .
 	
 Como resultado se envió el mensaje correctamente.![enter image description here](https://i.imgur.com/1gwbIVQ.jpg)
 
 
-# Delete
+## Delete
 **Delete** es una sentencia de postman que permite eliminar elementos y recursos tanto del backend, base de datos, etc.
 
 Realizaremos las peticioness **DELETE** en **GITTER** utilizando su  [api rest](https://developer.gitter.im/docs/rest-api).
 
-## Primer delete
+### Primer delete
 
 
 1. Primeramente **crearemos una room** en la aplicación de GITTER.
@@ -149,7 +163,7 @@ Realizaremos las peticioness **DELETE** en **GITTER** utilizando su  [api rest](
     
     ![Postman3](https://i.imgur.com/2AOHGbL.png)
 
-## Segundo delete
+### Segundo delete
 
 1. Para empezar crearemos una sala nueva a la que hemos llamado **room delete menssage**, en esta crearemos o postearemos un mensaje, en mi caso  "Mensaje que será eliminado o eso espero".
 ![Postman6](https://i.imgur.com/MY09BEj.png)
@@ -173,13 +187,13 @@ Realizaremos las peticioness **DELETE** en **GITTER** utilizando su  [api rest](
 ![Postman8](https://i.imgur.com/Bj3Dp9F.png)
 
 
-# PUT
+## PUT
 El método **Put** Crea un nuevo elemento o reemplaza una representación del elemento de destino con los datos de la petición.
 
-## PRIMER PUT 
+### PRIMER PUT 
 En el primer PUT utilizaremos la [API SPOTIFY](https://developer.spotify.com/documentation/web-api/). Lo que haremos sera realizar diferentes consultas a un usuario logado sin necesidad de introducir codigo.
 
-### **PARAMETRO DE ENTRADA**
+#### **PARAMETRO DE ENTRADA**
 **Cambiar los detalles de una lista de Reproduccion**
  - **Playlist_id:** El ID de Spotify para la lista de reproducción.
 
@@ -188,7 +202,7 @@ Cambiar una lista de reproducción pública para un usuario requiere la autoriza
 
 - **Tipo de contenido:** Requerido. El tipo de contenido del cuerpo de la solicitud:application/json
 
-### **PARAMETRO DE SALIDA**
+#### **PARAMETRO DE SALIDA**
 - En caso de éxito, el código de estado HTTP en el encabezado de respuesta es **200** correcto. En caso de error, el código de estado del encabezado es un código de error y el cuerpo de la respuesta contiene un objeto de error . Intentar cambiar una lista de reproducción cuando no tiene la autorización del usuario devuelve el error **403** Prohibido.
 	
 Como resultado se envió el mensaje correctamente.![enter image description here](https://i.imgur.com/NQWepbI.jpg)
@@ -196,7 +210,7 @@ Como resultado se envió el mensaje correctamente.![enter image description here
 Se corrobora resultado
 ![enter image description here](https://i.imgur.com/vqHQb0j.jpg)
 
-## Segundo Put
+### Segundo Put
 En el segundo put utilizaremos la [API GITTER](https://developer.gitter.im/docs/welcome). Lo que estamos actualizar el contenido de un mensaje de una sala.
 
 
@@ -237,5 +251,6 @@ fromUser:**Objeto**
 
 3. Como resultado final se modifico el contenido del mensaje.
 ![enter image description here](https://i.imgur.com/kzZgvDo.png)
+
 
 
