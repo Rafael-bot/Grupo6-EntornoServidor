@@ -328,5 +328,3 @@ def start():
 # Recordad de nuevo el "Divide y Vencerás", primero debéis analizar las diferentes
 # variales que van a afectaros, los posibles objetos que vayáis a necesitar,
 # cuál es la interacción entre esos objetos y el cómo sería el gameplay como orquestador
-
-start()
