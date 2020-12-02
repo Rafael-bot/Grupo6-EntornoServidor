@@ -186,6 +186,10 @@ Realizaremos las peticioness **DELETE** en **GITTER** utilizando su  [api rest](
 4. Finamente podemos ver que el mensaje ha sido eliminada.
 ![Postman8](https://i.imgur.com/Bj3Dp9F.png)
 
+### DETECTADO BUG
+
+Se ha detectado un bug en gitter ya que aún creando/posteando un mensaje nos devuelve el codigo ```204 No content```.
+
 
 ## PUT
 El método **Put** Crea un nuevo elemento o reemplaza una representación del elemento de destino con los datos de la petición.
