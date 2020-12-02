@@ -8,6 +8,7 @@
  - [Delete](https://github.com/Rafael-bot/Grupo6-EntornoServidor/blob/Sprint-3/TrabajoGrupal/Entregable_03.md#delete)
 	 - [Primer Delete](https://github.com/Rafael-bot/Grupo6-EntornoServidor/blob/Sprint-3/TrabajoGrupal/Entregable_03.md#primer-delete)
 	 - [Segundo Delete](https://github.com/Rafael-bot/Grupo6-EntornoServidor/blob/Sprint-3/TrabajoGrupal/Entregable_03.md#segundo-delete)
+	 - [Bug Detectado](https://github.com/Rafael-bot/Grupo6-EntornoServidor/blob/Sprint-3/TrabajoGrupal/Entregable_03.md#detectado-bug)
  - [Put](https://github.com/Rafael-bot/Grupo6-EntornoServidor/blob/Sprint-3/TrabajoGrupal/Entregable_03.md#put)
 	 - [Primer Put](https://github.com/Rafael-bot/Grupo6-EntornoServidor/blob/Sprint-3/TrabajoGrupal/Entregable_03.md#primer-put)
 	 - [Segundo Put](https://github.com/Rafael-bot/Grupo6-EntornoServidor/blob/Sprint-3/TrabajoGrupal/Entregable_03.md#segundo-put)
