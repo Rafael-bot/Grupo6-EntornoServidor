@@ -300,6 +300,7 @@ imprime_usuarios("nombres.txt")
 # sencillo juego:
 
 import random
+<<<<<<< HEAD:Sprint 1/Grupal/EntregableGrupal.py
 
 valores = ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9')
 
@@ -346,3 +347,53 @@ if propuesta == 'looser':
 else:
     print("¡Enhorabuena, ahora eres un hacker! ",
           intentos, "intentos realizados")
+=======
+def juego_decodificador():
+    print("¡Bienvenido al decodificador!")
+
+    valores = ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9')
+
+    cant_digitos = 3
+    codigo = ''
+
+    for i in range(cant_digitos):
+        candidato = random.choice(valores)
+
+        while candidato in codigo:
+            candidato = random.choice(valores)
+        codigo = codigo + candidato
+
+    print("Tienes que adivinar un numero de ", cant_digitos,
+          "cifras distintas")
+    propuesta = input('¿Cuál es tú apuesta?: ')
+
+    intentos = 3
+    while propuesta != codigo and propuesta != 'looser':
+        intentos = intentos + 1
+        aciertos = 0
+        coincidencias = 0
+        for i in range(cant_digitos):
+            if propuesta[i] == codigo[i]:
+                aciertos = aciertos + 1
+            elif propuesta[i] in codigo:
+                coincidencias = coincidencias + 1
+        print("Tu propuesta (", propuesta, ") tiene", aciertos,
+              "aciertos y ", coincidencias, "coincidencias.")
+
+        if coincidencias == 3:
+            print("¡Casi!, reordénalos.")
+        elif coincidencias == 2:
+            print(" Cerca, ¡sigue así!")
+        elif candidato == propuesta:
+            print("¡Enhorabuena, ahora eres un hacker! ",
+                  intentos, "intentos realizados")
+        propuesta = input("Nada, inténtalo de nuevo.  ")
+
+    if propuesta == 'looser':
+        print("El codigo era", codigo)
+        print("Suerte la proxima vez!")
+    else:
+        print("¡Enhorabuena, ahora eres un hacker! ",
+              intentos, "intentos realizados")
+
+>>>>>>> adc1fb0a1899c13b06c1a0b1cd5814cba9e6ee0f:Sprint_1/TrabajoGrupal/EntregableGrupal.py
