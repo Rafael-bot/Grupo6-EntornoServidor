@@ -1,6 +1,9 @@
 from django.shortcuts import render
 
 # Create your views here.
+def postPhoto(request):
+    context = {}
+    return render(request, 'Cuentas/postPhoto/postPhoto.html', context=context)
 
 def privateChat(request):
     context = {}
