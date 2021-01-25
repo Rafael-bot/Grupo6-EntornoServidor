@@ -1,6 +1,11 @@
 from django.shortcuts import render
 
 # Create your views here.
+
+def privateChat(request):
+    context = {}
+    return render(request, 'Cuentas/privateChat/privateChat.html', context=context)
+
 def configuration(request):
     context = {}
     return render(request, 'Cuentas/userConfiguration/configuration.html', context=context)
