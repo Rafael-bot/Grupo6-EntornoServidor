@@ -1,0 +1,30 @@
+# Modelos
+
+1. Cuentas:
+   - Usuario:
+        - username:Char
+        - password:Char
+        - email:Char
+        - profilePhoto: 
+        - tlfn:Int
+        - Biography:Char 
+        - user_code:Char
+    - Foto:
+        - foto:
+        - descripción:Char
+        - comment_code:Char
+        - user_code:Char
+    - Chat:
+        - text:Char
+        - user_code:Char
+        - date:DATETIME
+2. Posts:
+   - Foto:
+        - foto:
+        - descripción:Char
+        - comment_code:Char
+    - Coments:
+        - text:Char
+        - date:DATETIME
+        - user_code:Char
+        - comment_code:Char
