@@ -1,8 +1,17 @@
 {% extends 'Base.html' %}
 {% load static %}
 {% block contentNav %}
-    <div class="p-5">
-        <h1>Post Photo</h1>
+<div class="p-5">
+    <h1>Post Photo</h1>
+</div>
+<div class="container">
+    <div class=" card col-xl-4">
+        <img src="" alt="Aqui va la foto">
+        <button class="btn btn-success">Postear Imagen</button>
+        <div class="text-center">
+            <p>{{Imagen}}</p>
+        </div>
     </div>
+</div>
 
 {% endblock %}
