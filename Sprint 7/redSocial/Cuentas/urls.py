@@ -1,3 +1,5 @@
+from django.conf import settings
+from django.conf.urls.static import static
 from django.urls import path
 
 from . import views
@@ -10,4 +12,5 @@ urlpatterns = [
     path('register/', views.register, name='register'),
     path('privateChat/', views.privateChat, name='privateChat'),
 
+    path('<str:user>/', views.detail_user,name='detalleUser')
 ]
