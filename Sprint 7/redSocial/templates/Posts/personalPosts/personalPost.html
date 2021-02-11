@@ -1,0 +1,19 @@
+{% extends 'Base.html' %}
+{% load static %}
+{% block contentNav %}
+    <h1 class="text-center">{{ nombre }}</h1>
+    <div class="container">
+        <div class="row ">
+                <div class="card shadow-lg m-3 p-3" style="width: 18rem;">
+                    <img class="card-img-top"  src="http://127.0.0.1:8000/media/{{ foto.foto }}">
+                    <div class="card-body">
+                        <h5 class="card-title text-center pb-1">{{ foto.username_id }}</h5>
+                    </div>
+                    <span class="center"> {{ foto.descripcion }}</span>
+                </div>
+        </div>
+
+    </div>
+
+
+{% endblock %}
