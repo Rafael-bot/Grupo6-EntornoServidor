@@ -1,12 +1,17 @@
 {% extends 'Base.html' %}
 {% load static %}
 {% block contentNav %}
-<div class="p-5">
-    <h1>Posts Públicos</h1>
-</div>
-<div class="container">
-    {{foto}}
-    <h1>{{username}}</h1>
-    <p>{{descripción}}</p>
-</div>
+    <div class="p-5">
+        <h1>Posts Públicos</h1>
+    </div>
+    <div class="container">
+        {% for p in  public %}
+            <div class="card p-5">
+                <img src="http://127.0.0.1:8000/media/{{ p.foto }}" class="img-thumbnail w-100 p-1">
+                <h1>{{ p.username_id }}</h1>
+                <p>{{ p.descripcion }}</p>
+                <a href="/posts/{{p.comment_code}}">Mostrar mas</a>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}
