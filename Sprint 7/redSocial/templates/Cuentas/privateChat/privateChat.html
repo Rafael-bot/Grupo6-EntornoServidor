@@ -4,8 +4,10 @@
     <div class="p-5">
         <h1>Chat</h1>
     </div>
-<div class="container">
-    <p><a href="">{{Usuario1}}: </a>{{Mensaje1}}</p>
-    <p><a href="">{{Usuario2}}: </a>{{Mensaje2}}</p>
-</div>
+
+    <div class="container">
+        {% for c in chats %}
+            <p><a href="/cuentas/{{c.username_id}}">{{ c.username_id }}: </a>{{ c.chatText }}</p>
+        {% endfor %}
+    </div>
 {% endblock %}
