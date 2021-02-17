@@ -1,0 +1,13 @@
+{% extends 'Base.html' %}
+{% load static %}
+{% block contentNav %}
+    <div class="p-5">
+        <h1>Chat</h1>
+    </div>
+
+    <div class="container">
+        {% for c in chats %}
+            <p><a href="/cuentas/{{c.username_id}}">{{ c.username_id }}: </a>{{ c.chatText }}</p>
+        {% endfor %}
+    </div>
+{% endblock %}
