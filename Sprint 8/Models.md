@@ -1,26 +1,48 @@
 # Modelos
 
-1. Cuentas:
-   - Usuario:
-        - username:Char
-        - password:Char
-        - email:Char
-        - profilePhoto: 
-        - tlfn:Int
-        - Biography:Char 
-   - Chat:
-        - text:Char
-        - username:Char
-        - date:DATETIME
-2. Posts:
-    - Foto:
-        - foto:
-        - descripción:Char
-        - comment_code:Char
-        - username:Char
-        - cat: **filter**
-    - Coments:
-        - text:Char
-        - date:DATETIME
-        - username:Char
-        - comment_code:Char
+**user:**
+- username. PK
+- gmail
+- password
+
+**profile:**
+- id_profile. PK
+- photo
+- number
+- biography
+- username. FK
+- followers. FK
+- id_posts. FK
+
+**posts:**
+- id_posts. PK
+- numberPosts
+- photo
+- descripition
+- postDate
+- publicOrPrivate
+- id_coments. FK
+- like 
+
+**followers:**
+ - myfollows
+ - myfollowers
+ - username. FK
+ 
+**coments:**
+- id_coments. PK
+- dateOfComent
+- coment_text
+- username. FK
+
+**chat:**
+- id_chat. PK
+- chat_text
+- username. FK
+
+**historias:**
+- id_history. PK
+- history (photo)
+- username. FK
+
+
