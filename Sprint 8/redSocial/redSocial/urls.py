@@ -19,5 +19,8 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
+    path('', include('ey.urls')),
     path('admin/', admin.site.urls),
+    path('chats/', include('Chat.urls')),
+    path('coments/', include('Coments.urls')),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
