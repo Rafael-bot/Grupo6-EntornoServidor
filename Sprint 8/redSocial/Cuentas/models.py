@@ -18,8 +18,8 @@ class Followers(models.Model):
         ordering = ['id_followers']
 
     id_followers = models.CharField(max_length=80, unique=True, primary_key=True)
-    my_follows = models.IntegerField(max_length=12)
-    my_followers = models.IntegerField(max_length=12)
+    my_follows = models.IntegerField()
+    my_followers = models.IntegerField()
     username = models.ForeignKey(User,max_length=128, unique=False, on_delete=models.CASCADE)
 
     def __str__(self):

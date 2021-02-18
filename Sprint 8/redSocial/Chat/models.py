@@ -9,7 +9,7 @@ class Chat(models.Model):
     id_chat = models.CharField(max_length=80, unique=True, primary_key=True)
     chat_text = models.TextField(max_length=2021)
     date_text = models.DateTimeField()
-    username = models.ForeignKey("Cuentas.User", max_length=128, unique=False, on_delete=models.CASCADE)
+    username = models.ForeignKey("Cuentas.User", related_name='user', max_length=128, unique=False, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.chat_text
+        return self.id_chat
