@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import Cuentas,Chat
+from .models import User, Followers
 
 # Register your models here.
-admin.site.register(Cuentas)
-admin.site.register(Chat)
+admin.site.register(User)
+admin.site.register(Followers)

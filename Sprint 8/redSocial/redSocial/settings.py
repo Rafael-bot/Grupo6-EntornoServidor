@@ -45,6 +45,10 @@ INSTALLED_APPS = [
     'ey.apps.EyConfig',
     'Cuentas.apps.CuentasConfig',
     'Posts.apps.PostsConfig',
+    'Coments.apps.ComentsConfig',
+    'Profile.apps.ProfileConfig',
+    'Chat.apps.ChatConfig',
+    'Histories.apps.HistoriesConfig',
 ]
 
 MIDDLEWARE = [

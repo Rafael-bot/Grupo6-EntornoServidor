@@ -8,10 +8,9 @@
 **profile:**
 - id_profile. PK
 - photo
-- number
 - biography
 - username. FK
-- followers. FK
+- id_followers. FK
 - id_posts. FK
 
 **posts:**
@@ -22,9 +21,11 @@
 - postDate
 - publicOrPrivate
 - id_coments. FK
+- username. FK
 - like 
 
 **followers:**
+ - id_followers
  - myfollows
  - myfollowers
  - username. FK
@@ -34,14 +35,17 @@
 - dateOfComent
 - coment_text
 - username. FK
+- number_likes
 
 **chat:**
 - id_chat. PK
+- date_text
 - chat_text
 - username. FK
 
-**historias:**
+**histories:**
 - id_history. PK
+- date_of_history
 - history (photo)
 - username. FK
 

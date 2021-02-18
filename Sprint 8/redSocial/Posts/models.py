@@ -3,30 +3,20 @@ from django.db import models
 # Create your models here.
 
 
-class Foto(models.Model):
+class Posts(models.Model):
 
     class Meta:
-        ordering = ['cat']
+        ordering = ['post_date']
 
-    foto = models.ImageField(upload_to='posts')
-    descripcion = models.TextField(max_length=500, null=True)
-    cat = models.CharField(max_length=12)
-    username = models.ForeignKey('Cuentas.Cuentas', max_length=128,on_delete=models.CASCADE)
-    comment_code = models.CharField(max_length=10, unique=True,primary_key=True)
-
-    def __str__(self):
-        return self.cat
-
-
-class Coments(models.Model):
-
-    class Meta:
-        ordering = ['date']
-
-    text = models.CharField(max_length=2021)
-    date = models.DateTimeField()
-    username = models.ForeignKey('Cuentas.Cuentas', max_length=128,on_delete=models.CASCADE)
-    comment_code = models.ForeignKey(Foto,max_length=10, primary_key=True, unique=False,on_delete=models.CASCADE)
+    id_posts = models.CharField(max_length=80, unique=True, primary_key=True)
+    number_posts = models.IntegerField(max_length=12)
+    number_likes = models.IntegerField(max_length=12)
+    photo = models.ImageField(upload_to='posts')
+    description = models.TextField(max_length=500, null=True)
+    post_date = models.DateTimeField()
+    public_or_private = models.BooleanField()
+    username = models.ForeignKey('Cuentas.User', max_length=128,on_delete=models.CASCADE)
+    id_coments = models.ForeignKey('Coments.Coments',max_length=80, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.text
+        return self.id_posts
