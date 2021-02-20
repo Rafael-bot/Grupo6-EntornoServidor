@@ -2,3 +2,5 @@ Pillow
 Django
 Faker
 djangorestframework
+markdown
+django-filter
