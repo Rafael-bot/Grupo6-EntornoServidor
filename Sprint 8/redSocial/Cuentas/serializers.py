@@ -6,7 +6,7 @@ class UserSerializer(serializers.Serializer):
         model = User
         fields = ['username', 'password', 'email']
 
-    username = serializers.CharField()
+    username = serializers.CharField(max_length=128)
     password = serializers.CharField()
     email = serializers.EmailField()
 

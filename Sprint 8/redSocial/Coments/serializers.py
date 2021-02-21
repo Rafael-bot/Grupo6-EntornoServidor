@@ -2,16 +2,10 @@ from rest_framework import serializers
 from .models import Coments
 
 
-class ComentSerializer(serializers.Serializer):
+class ComentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Coments
-        fields = ['id_coments', 'last_name', 'email', 'username']
-
-    id_coments = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
-    coment_text = serializers.CharField()
-    date_of_coment = serializers.DateTimeField()
-    number_likes = serializers.IntegerField()
-    username = serializers.StringRelatedField(many=True)
+        fields = "__all__"
 
     def create(self, validated_data):
         return Coments.objects.create(**validated_data)
