@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import Coments
+from Cuentas.serializers import UserSerializer
 
 
 class ComentSerializer(serializers.ModelSerializer):

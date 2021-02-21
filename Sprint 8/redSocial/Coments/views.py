@@ -11,7 +11,13 @@ from .serializers import ComentSerializer
 @csrf_exempt
 def coment_list(request):
     if request.method == 'GET':
-        coment = Coments.objects.all()
+        c = str(request)
+        if c.find('?user=') >= 1:
+            user = request.GET.get('user')
+            coment = Coments.objects.filter(username=user).order_by('username')
+        else:
+            coment = Coments.objects.all()
+
         serializer = ComentSerializer(coment, many=True)
         return JsonResponse(serializer.data, safe=False, status=200)
     elif request.method == 'POST':
