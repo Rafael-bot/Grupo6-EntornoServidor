@@ -9,7 +9,7 @@ class Coments(models.Model):
     id_coments = models.CharField(max_length=80, unique=True, primary_key=True)
     coment_text = models.TextField(max_length=2021)
     date_of_coment = models.DateTimeField()
-    number_likes = models.IntegerField()
+    number_likes = models.IntegerField(blank=True,null=True)
     username = models.ForeignKey('Cuentas.User', max_length=128, unique=False, on_delete=models.CASCADE)
 
     def __str__(self):
