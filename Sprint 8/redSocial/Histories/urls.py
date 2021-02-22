@@ -3,6 +3,6 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.coment_list, name='coments_list'),
-    path('<slug:value>/',views.coment_detail, name='coments_detail'),
+    path('', views.history_list, name='history_list'),
+    path('<slug:value>/',views.history_detail, name='history_detail'),
 ]
