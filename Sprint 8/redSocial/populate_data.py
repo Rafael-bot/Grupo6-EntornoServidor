@@ -1,35 +1,68 @@
 import os
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", 'redSocial.settings')
+import time
 
-import django
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", 'redSocial.settings')
+import django, random as rd
+
+from random import random
 
 django.setup()
 
-from Cuentas.models import Cuentas, Chat
+from Cuentas.models import User
 
-from faker import Faker
+vocales = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']
+consonantes = ['b', 'c', 'd', 'e', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'x', 'y', 'z',
+               'B', 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'X', 'Y', 'Z']
 
-fakegen = Faker()
 
-def populate(n=5):
-    for entry in range(n):
-        fake_profile = fakegen.profile()
-        fake_username = fakegen.username()
-        fake_email = fakegen.email()
-        fake_password = fakegen.password()
-        fake_tlfn = fakegen.tlfn()
-        fake_biography = fakegen.biography()
+def generar_cadena(lenght):
+    if lenght <= 0:
+        return False
 
-        #Nueva entrada de datos
+    cadena = ''
 
-        user = Cuentas.object.get_or_create(profile = fake_profile, username = fake_username, password = fake_password, email = fake_email, biography = fake_biography)[0]
+    for i in range(lenght):
+        decision = rd.choice(('consonantes', 'vocales'))
+
+        if cadena[-1:].lower() in vocales:
+            decision = 'consonantes'
+        if cadena[-1:].lower() in consonantes:
+            decision = 'vocales'
+
+        if decision == 'consonantes':
+            op_letra = rd.choice(consonantes)
+        else:
+            op_letra = rd.choice(vocales)
+
+        if cadena == '':
+            cadena += op_letra.upper()
+        else:
+            cadena += op_letra
+    return cadena
+
+
+def generate_number():
+    return int(random() * 10 + 1)
+
+
+def populate(count):
+    for i in range(count):
+        random_user = generar_cadena(generate_number())
+        random_pasw = generar_cadena(generate_number())
+        random_mail = generar_cadena(generate_number())
+
+        User.objects.create(
+            username=random_user,
+            password=random_pasw,
+            email=random_mail
+        )
+
 
 if __name__ == '__main__':
-    print("RELLENANDO BASE DE DATOS")
-    populate(20)
-    print('COMPLETADO!')
-    
-
-
-
-
+    print("inicio de la creacion de populate")
+    print("por favor espere")
+    start = time.strftime("%c")
+    print(f'fecha y hora de inicio: {start}')
+    generar_cadena(50)
+    end = time.strftime("%c")
+    print(f'fecha y hora de finalizacion: {end}')
