@@ -6,12 +6,6 @@ class HistorieSerializer(serializers.ModelSerializer):
     class Meta:
         model = Histories
         fields = '__all__'
-        extra_fields = ('history')
-
-    #id_history = serializers.CharField(max_length=80)
-    history = serializers.ImageField(max_length=None, use_url=True)
-    #date_of_history = serializers.DateTimeField()
-    #username = serializers.CharField(max_length=128)
 
     def create(self, validated_data):
 
