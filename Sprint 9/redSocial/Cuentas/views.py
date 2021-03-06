@@ -1,12 +1,14 @@
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
+from rest_framework.permissions import IsAuthenticated
+
 from .models import User, Followers
 from .serializers import UserSerializer, FollowSerializer
 #Auth
 from django.contrib.auth.models import User as AuthUser
 from django.contrib.auth.hashers import check_password
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
 
@@ -14,6 +16,8 @@ from rest_framework.response import Response
 
 # Create your views here.
 @csrf_exempt
+@api_view(['GET', 'POST'])
+@permission_classes([IsAuthenticated])
 def user_list(request):
     if request.method == 'GET':
         user = User.objects.all()
@@ -29,6 +33,8 @@ def user_list(request):
 
 
 @csrf_exempt
+@api_view(['GET', 'PUT', 'DELETE'])
+@permission_classes([IsAuthenticated])
 def user_detail(request, value):
     try:
         user = User.objects.get(username=value)
@@ -57,6 +63,8 @@ def user_detail(request, value):
 
 
 @csrf_exempt
+@api_view(['GET', 'POST'])
+@permission_classes([IsAuthenticated])
 def followers_list(request):
     if request.method == 'GET':
         r = str(request)
@@ -77,6 +85,8 @@ def followers_list(request):
         return JsonResponse(serializer.errors, status=204)
 
 @csrf_exempt
+@api_view(['GET', 'PUT', 'DELETE'])
+@permission_classes([IsAuthenticated])
 def followers_detail(request, value):
     try:
         follow = Followers.objects.get(id_followers=value)

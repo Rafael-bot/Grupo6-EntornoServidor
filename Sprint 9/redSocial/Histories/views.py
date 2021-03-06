@@ -1,6 +1,8 @@
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.parsers import JSONParser
+from rest_framework.permissions import IsAuthenticated
 
 from .models import Histories
 from .serializers import HistorieSerializer
@@ -9,6 +11,8 @@ from .serializers import HistorieSerializer
 # Create your views here.
 
 @csrf_exempt
+@api_view(['GET', 'POST'])
+@permission_classes([IsAuthenticated])
 def history_list(request):
     if request.method == 'GET':
         history = Histories.objects.all()
@@ -24,6 +28,8 @@ def history_list(request):
 
 
 @csrf_exempt
+@api_view(['GET', 'PUT', 'DELETE'])
+@permission_classes([IsAuthenticated])
 def history_detail(request, value):
     try:
         history= Histories.objects.get(id_history=value)

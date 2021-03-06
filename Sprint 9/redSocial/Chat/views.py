@@ -1,6 +1,8 @@
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+from rest_framework.decorators import permission_classes, api_view
 from rest_framework.parsers import JSONParser
+from rest_framework.permissions import IsAuthenticated
 
 from .models import Chat
 from .serializers import ChatSerializer
@@ -9,6 +11,8 @@ from .serializers import ChatSerializer
 # Create your views here.
 
 @csrf_exempt
+@api_view(['GET', 'POST'])
+@permission_classes([IsAuthenticated])
 def chat_list(request):
     if request.method == 'GET':
         chats = Chat.objects.all()
@@ -24,6 +28,8 @@ def chat_list(request):
 
 
 @csrf_exempt
+@api_view(['GET', 'PUT', 'DELETE'])
+@permission_classes([IsAuthenticated])
 def chat_detail(request, value):
     try:
         chat = Chat.objects.get(id_chat=value)

@@ -1,6 +1,8 @@
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.parsers import JSONParser
+from rest_framework.permissions import IsAuthenticated
 
 from .models import Coments
 from .serializers import ComentSerializer
@@ -9,6 +11,8 @@ from .serializers import ComentSerializer
 # Create your views here.
 
 @csrf_exempt
+@api_view(['GET', 'POST'])
+@permission_classes([IsAuthenticated])
 def coment_list(request):
     if request.method == 'GET':
         c = str(request)
@@ -30,6 +34,8 @@ def coment_list(request):
 
 
 @csrf_exempt
+@api_view(['GET', 'PUT', 'DELETE'])
+@permission_classes([IsAuthenticated])
 def coment_detail(request, value):
     try:
         coment = Coments.objects.get(id_coments=value)
