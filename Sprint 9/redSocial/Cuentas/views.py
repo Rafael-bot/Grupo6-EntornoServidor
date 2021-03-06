@@ -103,7 +103,7 @@ def followers_detail(request, value):
         except:
             return HttpResponse(status=409)
 
-@api_view(['POST'])
+@api_view(['POST','GET'])
 def login(request):
     username = request.POST.get('username')
     password = request.POST.get('password')
@@ -120,4 +120,5 @@ def login(request):
 
     token, create = Token.objects.get_or_create(user=user)
     #print(token.key)
-    return HttpResponse(status=200)
+    return Response(token.key)
+
