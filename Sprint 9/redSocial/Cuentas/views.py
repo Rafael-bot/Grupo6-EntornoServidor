@@ -118,6 +118,6 @@ def login(request):
     if not pwd_valid:
         return HttpResponse(status=409)
 
-    token = Token.objects.create(user=user)
-    print(token.key)
+    token, create = Token.objects.get_or_create(user=user)
+    #print(token.key)
     return HttpResponse(status=200)
